@@ -1,0 +1,23 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($property, $duration: 0.3s, $ease: ease-in-out) {
+  transition: $property $duration $ease;
+}
+
+@mixin hover-effect($color) {
+  &:hover {
+    color: $color;
+  }
+}
+
+@mixin burger-line {
+  height: 5px;
+  width: 50px;
+  background: white;
+  border-radius: 5px;
+  @include transition(all);
+}

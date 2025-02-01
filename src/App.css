@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  max-width: 1440px;
+  margin: auto;
+  width: 100%;
+}
