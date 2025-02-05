@@ -3,10 +3,11 @@
 
 .home {
   background: $secondary-color;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 15px;
   margin-top: 3px;
 
   &__profil {
@@ -25,18 +26,19 @@
   @include tablet {
     align-items: flex-start;
     flex-direction: row;
+    padding: 30px 30px 40px 30px;
 
     &__profil {
       width: 32%;
-      margin-left: 35px;
 
       &--separation {
         width: 100%;
       }
     }
   }
-
   @include desktop {
+    padding: 30px 80px 40px 80px;
+
     &__profil {
       width: 30%;
     }
@@ -44,9 +46,17 @@
 
   &__presentation {
     @include flex-center;
+    flex-direction: column;
+    border-top: 3px solid $color-border;
+    margin: 0;
 
     @include tablet {
-      margin-top: 38px;
+      width: 100%;
+      border: 3px solid $color-border;
+      border-radius: 30px;
+    }
+
+    @include desktop {
       width: 100%;
     }
   }

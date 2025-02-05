@@ -1,9 +1,10 @@
-import Picture from "../../assets/photographie-goran-paunovic.webp";
+import Picture from "../../../public/assets/photographie-goran-paunovic.webp";
 import Links from "../../components/Links";
 import ModalButton from "../../components/ModalButton";
 import PictureProfile from "../../components/PictureProfile";
 import Presentation from "../../components/presentation";
 import Contact from "../../components/Profil";
+import Stack from "../../components/Stack";
 import "../Home/Home.scss";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
 Aujourd’hui, je conçois des applications web performantes et accessibles, avec une soif d’apprendre et une curiosité toujours tournée vers les nouvelles technologies.
 Bonne visite et n’hésitez pas à me contacter pour échanger !"
         />
+        <Stack />
       </section>
     </div>
   );

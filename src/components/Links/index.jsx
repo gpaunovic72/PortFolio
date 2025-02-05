@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import GitHub from "../../assets/icon-github.webp";
-import Linkedin from "../../assets/icon-linkedin.webp";
+import GitHub from "../../../public/assets/icon-github.webp";
+import Linkedin from "../../../public/assets/icon-linkedin.webp";
 import "../Links/Links.scss";
 
 export default function Links({ title }) {
