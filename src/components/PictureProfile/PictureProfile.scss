@@ -3,17 +3,14 @@
 .picture {
   width: 112px;
   height: 118px;
-  margin-top: 15px;
 
   @include tablet {
     width: 170px;
     height: 177px;
-    margin-left: 85px;
   }
 
   @include desktop {
     width: 296px;
     height: 296px;
-    margin-left: 118px;
   }
 }

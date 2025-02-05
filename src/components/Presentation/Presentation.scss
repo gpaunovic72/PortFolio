@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.presentation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-top: 3px solid $color-border;
+  gap: 10px;
+  padding: 15px 30px;
+
+  &__title {
+    text-wrap: nowrap;
+    font-size: $font-size-title-mobile;
+    font-weight: $font-weight-bold;
+    color: $color-title;
+  }
+
+  &__separation {
+    border: 2px solid $color-border;
+    width: 63%;
+  }
+
+  &__text {
+    font-size: $font-size-text-mobile;
+    font-weight: $font-weight-medium;
+    color: $color-text;
+  }
+
+  @include tablet {
+    width: 80%;
+    border: 3px solid $color-border;
+    border-radius: 30px;
+    align-items: flex-start;
+    padding: 10px;
+
+    &__title {
+      font-size: $font-size-title-tab;
+    }
+
+    &__separation {
+      width: 90%;
+    }
+  }
+
+  @include desktop {
+    &__separation {
+      width: 60%;
+    }
+    &__text {
+      font-size: $font-size-infos-mobile;
+    }
+  }
+}
