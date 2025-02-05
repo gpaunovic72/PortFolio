@@ -47,6 +47,7 @@
     text-align: center;
     top: 100px;
     border-radius: 5px;
+    z-index: 10;
 
     transform: translateY(-100%);
     opacity: 0;
@@ -72,7 +73,6 @@
       text-decoration: none;
       color: $color-title;
       font-size: $font-size-title-mobile;
-      font-family: $font-family;
       font-weight: $font-weight-medium;
       @include hover-effect($color-hover-liens);
 
@@ -88,7 +88,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @include tablet {
     &__burger {
       display: none;
     }
@@ -122,7 +122,7 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  @include desktop {
     &__link {
       display: flex;
       justify-content: flex-start;

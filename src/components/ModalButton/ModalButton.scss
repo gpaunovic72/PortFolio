@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.btnModal {
+  background: $color-btn;
+  font-size: $font-size-title-mobile;
+  font-weight: $font-weight-bold;
+  color: $color-title;
+  border: none;
+  display: flex;
+  width: 100%;
+
+  padding: 5px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    background: rgba(35, 134, 54, 0.4);
+    transform: scale(1.1);
+  }
+
+  @include tablet {
+    font-size: $font-size-infos-tab;
+  }
+}

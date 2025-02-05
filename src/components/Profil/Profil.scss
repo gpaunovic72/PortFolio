@@ -1,0 +1,46 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/variables.scss";
+
+.profil {
+  @include flex-center;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease-in-out forwards;
+
+  &__title {
+    font-size: $font-size-title-mobile;
+    font-weight: $font-weight-bold;
+    color: $color-title;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    color: $color-text;
+    font-size: $font-size-infos-mobile;
+  }
+  @include tablet {
+    align-items: flex-start;
+
+    &__title {
+      font-size: $font-size-title-tab;
+    }
+
+    &__text {
+      font-size: $font-size-infos-tab;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

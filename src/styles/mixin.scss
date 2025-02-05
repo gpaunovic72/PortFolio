@@ -21,3 +21,14 @@
   border-radius: 5px;
   @include transition(all);
 }
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

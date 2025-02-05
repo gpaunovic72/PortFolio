@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.home {
+  background: $secondary-color;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3px;
+
+  &__profil {
+    @include flex-center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    width: 78%;
+
+    &--separation {
+      width: 200px;
+      border: 2px solid $color-border;
+    }
+  }
+
+  @include tablet {
+    align-items: flex-start;
+
+    &__profil {
+      width: 32%;
+      margin-left: 35px;
+
+      &--separation {
+        width: 100%;
+      }
+    }
+  }
+
+  @include desktop {
+    &__profil {
+      width: 30%;
+    }
+  }
+}
