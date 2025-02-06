@@ -11,7 +11,7 @@ export default function Header() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const navLink = [
+  const navLinks = [
     { id: "presentation", label: "Présentation", icon: Presentation },
     { id: "projets", label: "Projets", icon: Projets },
     { id: "experiences", label: "Expériences", icon: Experiences },
@@ -30,7 +30,7 @@ export default function Header() {
       </button>
       <nav className={`navbar__link ${isOpen ? "open" : ""}`}>
         <ul>
-          {navLink.map(({ id, label, icon }) => (
+          {navLinks.map(({ id, label, icon }) => (
             <li key={id}>
               <img
                 src={icon}
