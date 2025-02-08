@@ -1,0 +1,123 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixin.scss" as *;
+
+.experiences {
+  width: 100%;
+  height: 243px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15px;
+  gap: 15px;
+
+  &__title {
+    color: $color-title;
+    text-align: center;
+    font-size: $font-size-title-mobile;
+  }
+
+  &__separation {
+    border: 2px solid $color-border;
+    width: 200px;
+  }
+
+  &__table {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &--month {
+      font-size: $font-size-text-mobile;
+      color: $color-text;
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      float: left;
+      height: 20px;
+      grid-column: 2/-1;
+
+      .months {
+        margin-right: 43px;
+      }
+    }
+
+    &--year {
+      font-size: $font-size-text-mobile;
+      color: $color-text;
+      display: flex;
+      flex-direction: column;
+      margin: 5px 0 0 6px;
+      width: 32px;
+      height: auto;
+      grid-row: 2/-1;
+    }
+
+    &--box {
+      grid-column: 2/-1;
+      width: 770px;
+      margin-top: 5px;
+      padding: 4px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+
+      .box-row {
+        display: contents;
+      }
+
+      .month-boxes {
+        display: flex;
+        gap: 3px;
+      }
+
+      .box {
+        width: 10px;
+        height: 10px;
+        border: 1px solid $color-border;
+      }
+    }
+  }
+  &__data {
+    font-size: $font-size-text-mobile;
+    color: $color-text;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    margin-left: 80px;
+
+    &--exp {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .color {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  @include tablet {
+    border: 3px solid $color-border;
+    border-radius: 30px;
+    align-items: flex-start;
+    gap: 10px;
+
+    &__title {
+      margin: 13px 40px;
+      font-size: $font-size-title-tab;
+    }
+
+    &__separation {
+      margin-left: 38px;
+      width: 60%;
+    }
+  }
+}

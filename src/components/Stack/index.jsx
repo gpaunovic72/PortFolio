@@ -11,7 +11,6 @@ export default function Stack() {
     { id: 7, name: "VsCode", icon: "../../../public/assets/VSCode.webp" },
     { id: 8, name: "Figma", icon: "../../../public/assets/Figma.webp" },
   ];
-  console.log(stackList);
   return (
     <div className="stack">
       <h2 className="stack__title">STACK</h2>

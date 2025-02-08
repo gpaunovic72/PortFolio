@@ -1,5 +1,5 @@
-@import "../../styles/variables.scss";
-@import "../../styles/mixin.scss";
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixin.scss" as *;
 
 .stack {
   width: 81%;
@@ -7,7 +7,6 @@
   align-items: center;
   flex-direction: column;
   padding: 15px 0;
-  border-bottom: 3px solid $color-border;
   gap: 15px;
 
   &__separation {
