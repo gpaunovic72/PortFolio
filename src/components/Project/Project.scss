@@ -1,0 +1,119 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixin.scss" as *;
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  gap: 15px;
+  width: 94%;
+
+  &__separation {
+    border: 2px solid $color-border;
+    width: 57%;
+  }
+
+  &__title {
+    font-size: $font-size-title-mobile;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+
+    &--card {
+      background-color: $primary-color;
+      border: 3px solid $color-border;
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+
+      .title {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 5px;
+
+        h3 {
+          color: $color-h3;
+          font-size: $font-size-infos-mobile;
+        }
+        p {
+          color: $color-text-cards;
+          font-size: $font-size-text-mobile;
+          border: 1px solid $color-border;
+          border-radius: 30px;
+          text-align: center;
+          padding: 4px 9px;
+        }
+      }
+      .card {
+        display: flex;
+        gap: 5px;
+        padding: 0 0 10px 20px;
+
+        &__stack {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-size: $font-size-text-mobile;
+          color: $color-text-cards;
+
+          &--color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+          }
+        }
+      }
+      .btnProject {
+        display: flex;
+        align-items: center;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  @include tablet {
+    align-items: flex-start;
+    padding: 35px;
+    &__title {
+      font-size: $font-size-title-tab;
+    }
+
+    &__separation {
+      width: 65%;
+    }
+    &__cards {
+      align-items: center;
+      &--card {
+        width: 80%;
+
+        .btnProject {
+          margin-right: 32px;
+        }
+      }
+    }
+  }
+  @include desktop {
+    width: 100%;
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      &--card {
+        width: 100%;
+      }
+
+      .btnProject {
+        margin-right: 15px;
+      }
+    }
+  }
+}

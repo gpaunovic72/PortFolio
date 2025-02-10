@@ -6,11 +6,12 @@
   font-size: $font-size-title-mobile;
   font-weight: $font-weight-bold;
   color: $color-title;
-  border: none;
+  border: 1px solid $color-border;
   display: flex;
+  justify-content: center;
+  padding: 5px 10.5px;
   width: 100%;
-
-  padding: 5px 16px;
+  min-width: 236px;
   border-radius: 10px;
   cursor: pointer;
 
@@ -23,5 +24,9 @@
 
   @include tablet {
     font-size: $font-size-infos-tab;
+    width: 82%;
+    min-width: 217px;
+    font-size: $font-size-title-mobile;
+    padding: 8px 4.5px;
   }
 }

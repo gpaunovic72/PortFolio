@@ -1,0 +1,25 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixin.scss" as *;
+
+.btnProjects {
+  background: $color-btn;
+  font-size: $font-size-text-mobile;
+  font-weight: $font-weight-medium;
+  color: $color-title;
+  border: none;
+  display: flex;
+  padding: 5px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    background: rgba(35, 134, 54, 0.4);
+    transform: scale(1.1);
+  }
+
+  @include tablet {
+    font-size: $font-size-infos-mobile;
+  }
+}

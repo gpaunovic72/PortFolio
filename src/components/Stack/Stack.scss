@@ -67,9 +67,9 @@
     &__cards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      gap: 15px;
       width: 100%;
-      padding: 5px 10px;
+      padding: 5px 15px;
 
       &--onCard {
         gap: 5px;

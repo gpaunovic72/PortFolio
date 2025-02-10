@@ -3,81 +3,103 @@
 
 .home {
   background: $secondary-color;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 15px;
   margin-top: 3px;
 
-  &__profil {
-    @include flex-center;
+  &__about {
+    display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 15px;
-    padding: 15px;
-    width: 78%;
 
-    &--separation {
-      width: 200px;
-      border: 2px solid $color-border;
-    }
-  }
-
-  @include tablet {
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
-    flex-wrap: wrap;
-
-    &__profil {
-      width: 30%;
-
-      &--separation {
-        width: 100%;
-      }
-    }
-  }
-  @include desktop {
-    flex-wrap: nowrap;
-    padding: 30px 40px 40px;
-
-    &__profil {
-      width: 30%;
-    }
-  }
-
-  &__presentation {
-    width: 100%;
-    @include tablet {
-      width: 65%;
-    }
-    @include desktop {
-      width: 65%;
-    }
-
-    &--pres {
+    &--profil {
       @include flex-center;
       flex-direction: column;
-      border-top: 3px solid $color-border;
-      border-bottom: 3px solid $color-border;
+      gap: 15px;
+      padding: 10px;
+      width: 90%;
 
+      .separation {
+        width: 200px;
+        border: 2px solid $color-border;
+      }
+    }
+
+    @include tablet {
+      align-items: flex-start;
+      flex-direction: row;
+
+      &--profil {
+        width: 40%;
+
+        .separation {
+          width: 100%;
+        }
+      }
+    }
+    @include desktop {
+      gap: 40px;
+      &--profil {
+        width: 30%;
+      }
+    }
+
+    &--presentation {
+      width: 100%;
       @include tablet {
-        width: 100%;
-        border: 3px solid $color-border;
-        border-radius: 30px;
+        width: 65%;
       }
       @include desktop {
         width: 100%;
       }
+
+      .pres {
+        @include flex-center;
+        flex-direction: column;
+        border-top: 3px solid $color-border;
+        border-bottom: 3px solid $color-border;
+
+        @include tablet {
+          width: 100%;
+          border: 3px solid $color-border;
+          border-radius: 30px;
+        }
+      }
     }
   }
-  &__exp {
-    width: 100%;
-    @include tablet {
+
+  &__career {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    &--exp {
       width: 100%;
+    }
+
+    &--project {
+      width: 100%;
+      @include flex-center;
+      flex-direction: column;
+      border-top: 3px solid $color-border;
+
+      @include tablet {
+        border-top: none;
+        border: 3px solid $color-border;
+        border-radius: 30px;
+      }
     }
     @include desktop {
-      width: 100%;
+      margin-top: -100px;
+      padding: 0;
+      position: relative;
+      left: 25.7%;
+      width: 74.2%;
     }
+  }
+  @include tablet {
+    padding: 30px;
+  }
+  @include desktop {
+    padding: 80px;
   }
 }
