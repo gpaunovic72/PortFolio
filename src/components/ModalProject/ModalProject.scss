@@ -1,0 +1,101 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixin.scss" as *;
+
+.modal {
+  &__card {
+    border: 2px solid $color-border;
+    border-radius: 30px;
+    padding: 10px;
+    background: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    overflow: hidden;
+
+    &--container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      flex-shrink: hidden;
+      .img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+        color: white;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 3px;
+    color: $color-text;
+    font-size: $font-size-title-mobile;
+  }
+
+  &__separation {
+    border: 2px solid $color-border;
+    width: 67.5%;
+  }
+  &__description {
+    padding: 5px;
+    white-space: pre-line;
+    max-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    &--detail {
+      text-align: center;
+      color: $color-text;
+      font-size: $font-size-text-mobile;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-btn;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+      color: $color-click-btn;
+    }
+  }
+
+  @include tablet {
+    .modal {
+      &__card {
+        &--container {
+          width: 90%;
+          height: 400px;
+
+          .img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      &__title {
+        font-size: $font-size-title-tab;
+      }
+      &__description {
+        &--detail {
+          font-size: $font-size-infos-mobile;
+        }
+      }
+    }
+  }
+
+  @include desktop {
+    margin: 3px;
+    .modal {
+      &__card {
+        &--container {
+          width: 100%;
+          height: 400px;
+        }
+      }
+    }
+  }
+}

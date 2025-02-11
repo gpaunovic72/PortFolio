@@ -28,7 +28,7 @@ export default function Project() {
               </div>
             </div>
             <div className="btnProject">
-              <ProjectButton />
+              <ProjectButton project={card} />
             </div>
           </div>
         ))}

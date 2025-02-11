@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import ModalProject from "../ModalProject";
 import "../ProjectButton/ProjectButton.scss";
 
-export default function ProjectButton() {
+export default function ProjectButton({ project }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,9 +14,16 @@ export default function ProjectButton() {
       </button>
       {showModal &&
         createPortal(
-          <ModalProject closeModal={() => setShowModal(false)} />,
+          <ModalProject
+            project={project}
+            closeModal={() => setShowModal(false)}
+          />,
           document.body
         )}
     </div>
   );
 }
+
+ProjectButton.propTypes = {
+  project: PropTypes.object.isRequired,
+};

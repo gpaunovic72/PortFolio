@@ -13,7 +13,7 @@ export default function Header() {
 
   const navLinks = [
     { id: "presentation", label: "Présentation", icon: Presentation },
-    { id: "projets", label: "Projets", icon: Projets },
+    { id: "projects", label: "Projets", icon: Projets },
     { id: "experiences", label: "Expériences", icon: Experiences },
   ];
 

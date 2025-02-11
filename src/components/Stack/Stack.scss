@@ -54,7 +54,6 @@
 
   @include tablet {
     align-items: flex-start;
-    border-bottom: none;
 
     &__title {
       font-size: $font-size-title-tab;
@@ -69,7 +68,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
       width: 100%;
-      padding: 5px 15px;
+      padding: 5px 10px;
 
       &--onCard {
         gap: 5px;
