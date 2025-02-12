@@ -8,12 +8,12 @@ export default function ModalProject({ project, closeModal }) {
   return (
     <>
       <div onClick={closeModal} className="close" />
-      <div className="modal">
-        <button className="modal__close" onClick={closeModal}>
+      <div className="modalProject">
+        <button className="modalProject__close" onClick={closeModal}>
           X
         </button>
-        <div className="modal__card">
-          <div className="modal__card--container">
+        <div className="modalProject__card">
+          <div className="modalProject__card--container">
             {Array.isArray(project.picture) ? (
               <CarouselSlides pictures={project.picture} />
             ) : (
@@ -24,12 +24,14 @@ export default function ModalProject({ project, closeModal }) {
               />
             )}
           </div>
-          <h3 className="modal__title">{project.title}</h3>
-          <div className="modal__separation" />
-          <div className="modal__description">
-            <p className="modal__description--detail">{project.description}</p>
+          <h3 className="modalProject__title">{project.title}</h3>
+          <div className="modalProject__separation" />
+          <div className="modalProject__description">
+            <p className="modalProject__description--detail">
+              {project.description}
+            </p>
           </div>
-          <a href={project.lien} target="_blank" className="modal__link">
+          <a href={project.lien} target="_blank" className="modalProject__link">
             Voir plus
           </a>
         </div>

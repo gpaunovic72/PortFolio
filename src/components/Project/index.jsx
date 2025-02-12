@@ -4,7 +4,7 @@ import ProjectButton from "../ProjectButton";
 
 export default function Project() {
   return (
-    <div className="project">
+    <div className="project" id="projects">
       <h2 className="project__title">Projets</h2>
       <hr className="project__separation" />
       <div className="project__cards">

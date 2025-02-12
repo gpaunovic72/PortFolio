@@ -3,7 +3,7 @@ import "../Presentation/Presentation.scss";
 
 export default function Presentation({ title, text }) {
   return (
-    <div className="presentation">
+    <div className="presentation" id="presentation">
       <h1 className="presentation__title">{title}</h1>
       <hr className="presentation__separation"></hr>
       <p className="presentation__text">{text}</p>

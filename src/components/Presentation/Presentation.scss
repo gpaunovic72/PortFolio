@@ -19,7 +19,7 @@
 
   &__separation {
     border: 2px solid $color-border;
-    width: 63%;
+    width: 200px;
   }
 
   &__text {
@@ -29,12 +29,12 @@
   }
 
   @include tablet {
-    width: 80%;
+    width: 100%;
     align-items: flex-start;
-    padding: 10px;
 
     &__title {
       font-size: $font-size-title-tab;
+      margin-left: 38px;
     }
 
     &__text {
@@ -42,12 +42,7 @@
     }
 
     &__separation {
-      width: 90%;
-    }
-  }
-
-  @include desktop {
-    &__separation {
+      margin-left: 38px;
       width: 60%;
     }
   }

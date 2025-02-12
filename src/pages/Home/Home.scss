@@ -61,11 +61,13 @@
         flex-direction: column;
         border-top: 3px solid $color-border;
         border-bottom: 3px solid $color-border;
+        gap: 15px;
 
         @include tablet {
           width: 100%;
           border: 3px solid $color-border;
           border-radius: 30px;
+          padding: 20px;
         }
       }
     }
@@ -89,14 +91,16 @@
         border-top: none;
         border: 3px solid $color-border;
         border-radius: 30px;
+        padding: 20px;
       }
     }
+
     @include desktop {
-      margin-top: -100px;
+      margin-top: -60px;
       padding: 0;
       position: relative;
-      left: 25.7%;
-      width: 74.2%;
+      left: 27%;
+      width: 73.1%;
     }
   }
   @include tablet {

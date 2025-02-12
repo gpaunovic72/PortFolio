@@ -9,6 +9,7 @@ export default function PictureProfile({ picture, name }) {
         alt={`Photographie de ${name}`}
         aria-label="Picture"
         className="picture"
+        id="contact"
       />
     </>
   );

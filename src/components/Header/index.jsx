@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Contact from "../../../public/assets/icon-email.webp";
 import Experiences from "../../../public/assets/icon-experiences.webp";
 import Presentation from "../../../public/assets/icon-presentation.webp";
 import Projets from "../../../public/assets/icon-projets.webp";
@@ -15,6 +16,7 @@ export default function Header() {
     { id: "presentation", label: "Présentation", icon: Presentation },
     { id: "projects", label: "Projets", icon: Projets },
     { id: "experiences", label: "Expériences", icon: Experiences },
+    { id: "contact", label: "Contact", icon: Contact },
   ];
 
   return (

@@ -3,11 +3,10 @@
 
 .btnProjects {
   background: $color-btn;
-  font-size: $font-size-text-mobile;
+  font-size: $font-size-infos-mobile;
   font-weight: $font-weight-medium;
   color: $color-title;
   border: none;
-  display: flex;
   padding: 5px 12px;
   border-radius: 10px;
   cursor: pointer;
@@ -17,9 +16,5 @@
   &:hover {
     background: rgba(35, 134, 54, 0.4);
     transform: scale(1.1);
-  }
-
-  @include tablet {
-    font-size: $font-size-infos-mobile;
   }
 }

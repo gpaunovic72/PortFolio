@@ -6,7 +6,7 @@ export default function ExperienceTable() {
   const { months, years, isMonthColored } = useExperiences();
 
   return (
-    <div className="experiences">
+    <div className="experiences" id="experiences">
       <h2 className="experiences__title">Expériences</h2>
       <hr className="experiences__separation" />
       <div className="experiences__table">
