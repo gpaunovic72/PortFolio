@@ -93,7 +93,11 @@ export const cards = [
       { color: "#C6538C", stack: "SCSS" },
       { color: "#1F6FEB", stack: "REACT" },
     ],
-    picture: "",
+    picture: [
+      "../../../public/assets/Portfolio.webp",
+      "../../../public/assets/Portfolio-1.webp",
+      "../../../public/assets/Portfolio-2.webp",
+    ],
     description:
       "Pour ce projet, ma mission était de créer mon portfolio, en veillant à ce qu’il soit responsive et accessible en ligne.",
     lien: "https://github.com/gpaunovic72/PortFolio",
