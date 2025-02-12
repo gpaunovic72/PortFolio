@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import CarouselSlides from "../CarouselSlides";
 import "../ModalProject/ModalProject.scss";
 
 export default function ModalProject({ project, closeModal }) {
+  const [selectedImage, setSelectedImage] = useState(null);
   if (!project) return null;
 
   return (
@@ -14,15 +16,14 @@ export default function ModalProject({ project, closeModal }) {
         </button>
         <div className="modalProject__card">
           <div className="modalProject__card--container">
-            {Array.isArray(project.picture) ? (
-              <CarouselSlides pictures={project.picture} />
-            ) : (
-              <img
-                src={project.picture}
-                alt={`Image du ${project.title}`}
-                className="img"
-              />
-            )}
+            <CarouselSlides
+              pictures={
+                Array.isArray(project.picture)
+                  ? project.picture
+                  : [project.picture]
+              }
+              onClick={(image) => setSelectedImage(image)}
+            />
           </div>
           <h3 className="modalProject__title">{project.title}</h3>
           <div className="modalProject__separation" />
@@ -36,6 +37,16 @@ export default function ModalProject({ project, closeModal }) {
           </a>
         </div>
       </div>
+
+      {selectedImage && (
+        <div className="fullscreen" onClick={() => setSelectedImage(null)}>
+          <img
+            src={selectedImage}
+            alt="Agrandissement de l'image"
+            className="fullscreen__img"
+          />
+        </div>
+      )}
     </>
   );
 }

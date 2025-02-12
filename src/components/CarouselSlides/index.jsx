@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "../CarouselSlides/CarouselSlides.scss";
 
-export default function CarouselSlides({ pictures }) {
+export default function CarouselSlides({ pictures, onClick }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export default function CarouselSlides({ pictures }) {
           src={src}
           alt={`project ${i}`}
           className={`carouselContainer__img ${i === index ? "active" : ""}`}
+          onClick={() => onClick(pictures[index])}
         />
       ))}
     </div>
@@ -33,4 +34,5 @@ export default function CarouselSlides({ pictures }) {
 
 CarouselSlides.propTypes = {
   pictures: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClick: PropTypes.func.isRequired,
 };

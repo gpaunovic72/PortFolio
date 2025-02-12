@@ -1,0 +1,29 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixin.scss" as *;
+
+.footer {
+  margin-top: 3px;
+  background: $primary-color;
+  height: 121px;
+  width: 100%;
+  @include flex-center;
+
+  &__copy {
+    color: $color-text-cards;
+    font-size: $font-size-text-mobile;
+  }
+
+  @include tablet {
+    height: 110px;
+
+    &__copy {
+      font-size: $font-size-infos-mobile;
+    }
+  }
+
+  @include desktop {
+    &__copy {
+      font-size: $font-size-title-mobile;
+    }
+  }
+}
