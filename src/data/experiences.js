@@ -3,7 +3,7 @@ export const experiences = [
     name: "OpenClassrooms",
     color: "#7451EB",
     start: "2024-09",
-    end: "2025-03",
+    end: "2025-02",
   },
 ];
 
