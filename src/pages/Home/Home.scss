@@ -10,9 +10,11 @@
 
   @include tablet {
     padding: 0 30px;
+    @include transition;
   }
   @include desktop {
     padding: 60px;
+    @include transition;
   }
 
   &__about {
@@ -20,6 +22,7 @@
     flex-direction: column;
     margin-top: 20px;
     gap: 15px;
+    @include transition;
 
     &--profil {
       @include flex-center;
@@ -27,10 +30,12 @@
       gap: 15px;
       padding: 10px;
       width: 90%;
+      @include transition;
 
       .separation {
         width: 200px;
         border: 2px solid $color-border;
+        @include transition;
       }
     }
 
@@ -40,6 +45,7 @@
 
       &--profil {
         width: 40%;
+        @include transition;
 
         .separation {
           width: 100%;
@@ -48,6 +54,8 @@
     }
     @include desktop {
       gap: 40px;
+      @include transition;
+
       &--profil {
         width: 30%;
       }
@@ -55,6 +63,8 @@
 
     &--presentation {
       width: 100%;
+      @include transition;
+
       @include tablet {
         width: 65%;
       }
@@ -68,6 +78,7 @@
         border-top: 3px solid $color-border;
         border-bottom: 3px solid $color-border;
         gap: 15px;
+        @include transition;
 
         @include tablet {
           width: 100%;
@@ -83,6 +94,8 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    @include transition;
+
     &--exp {
       width: 100%;
     }
@@ -99,6 +112,7 @@
         border-radius: 30px;
         padding: 20px;
         margin-bottom: 30px;
+        @include transition;
       }
     }
 
@@ -108,6 +122,7 @@
       position: relative;
       left: 27%;
       width: 73.1%;
+      @include transition;
     }
   }
 }
