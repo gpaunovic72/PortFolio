@@ -1,4 +1,4 @@
-import Picture from "../../../public/assets/photographie-goran-paunovic.webp";
+import Picture from "../../assets/photographie-goran-paunovic.webp";
 import ExperienceTable from "../../components/ExperienceTable";
 import Links from "../../components/Links";
 import ModalButton from "../../components/ModalButton";

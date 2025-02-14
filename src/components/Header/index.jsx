@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Headroom from "react-headroom";
-import Contact from "../../../public/assets/icon-email.webp";
-import Experiences from "../../../public/assets/icon-experiences.webp";
-import Presentation from "../../../public/assets/icon-presentation.webp";
-import Projets from "../../../public/assets/icon-projets.webp";
+import Contact from "../../assets/icon-email.webp";
+import Experiences from "../../assets/icon-experiences.webp";
+import Presentation from "../../assets/icon-presentation.webp";
+import Projets from "../../assets/icon-projets.webp";
 import "../Header/Header.scss";
 
 export default function Header() {
