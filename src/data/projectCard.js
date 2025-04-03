@@ -1,4 +1,9 @@
-import Booki from "../assets/Booki.webp";
+import Crossfit_Heiden_contact from "../assets/Crossfit_Heiden_contact.webp";
+import Crossfit_Heiden_kids from "../assets/Crossfit_Heiden_kids.webp";
+import Crossfit_Heiden_la_box from "../assets/Crossfit_Heiden_la_box.webp";
+import CrossFit_Heiden_page_accueil from "../assets/CrossFit_Heiden_page_accueil.webp";
+import Crossfit_Heiden_programmations from "../assets/Crossfit_Heiden_programmations.webp";
+import Crossfit_Heiden_tarifs_boutique from "../assets/Crossfit_Heiden_tarifs_boutique.webp";
 import Kasa1 from "../assets/Kasa-1.webp";
 import Kasa2 from "../assets/Kasa-2.webp";
 import Kasa3 from "../assets/Kasa-3.webp";
@@ -19,16 +24,24 @@ import SophieBluel3 from "../assets/sophie-bluel-3.webp";
 export const cards = [
   {
     id: 1,
-    title: "Booki",
+    title: "CrossFit Heiden",
     date: "2024",
     stacks: [
-      { color: "#E34C26", stack: "HTML" },
+      { color: "#21759B", stack: "Wordpress" },
+      { color: "#F1E05A", stack: "Javascript" },
       { color: "#663399", stack: "CSS" },
     ],
-    picture: Booki,
+    picture: [
+      CrossFit_Heiden_page_accueil,
+      Crossfit_Heiden_kids,
+      Crossfit_Heiden_la_box,
+      Crossfit_Heiden_programmations,
+      Crossfit_Heiden_tarifs_boutique,
+      Crossfit_Heiden_contact,
+    ],
     description:
-      "Pour ce projet, j'ai été chargé d'intégrer l'interface du site Booki en HTML et CSS, en respectant la maquette fournie ainsi que les principes du responsive design.\n\n J'ai suivi les spécifications techniques détaillées et assuré le versionnement du projet sur GitHub.\n\n J'ai rencontré des difficultés pour adapter les cartes et éviter que les éléments ne se chevauchent ou ne débordent. Pour résoudre ce problème, j'ai utilisé les flexbox et défini les largeurs en pourcentages, ce qui m'a permis de créer une mise en page fluide et réactive, garantissant que les éléments s'ajustent correctement sur différentes tailles d'écran. ",
-    lien: "https://github.com/gpaunovic72/Booki",
+      "J'ai réalisé une refonte complète du site de CrossFit Heiden en utilisant WordPress. L'objectif était d'améliorer le design, l'expérience utilisateur et les performances du site.\n\n J'ai personnalisé le thème, optimisé les images et ajouté de nouvelles fonctionnalités. \n\n J'ai également amélioré le référencement naturel (SEO) en structurant le contenu et en optimisant les balises meta, permettant au site d'être mieux indexé sur les moteurs de recherche. ",
+    lien: "https://www.crossfit-heiden.fr/",
   },
   {
     id: 2,

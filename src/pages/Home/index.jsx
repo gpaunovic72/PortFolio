@@ -26,7 +26,8 @@ export default function Home() {
             <Presentation
               title="BIENVENUE SUR MON PORTFOLIO"
               text={`Je m’appelle Goran Paunovic, j’ai 37 ans et je suis passionné par le développement web et en pleine reconversion professionnelle. Après 8 ans dans le secteur des télécoms et des centaines de déplacements, j’ai décidé de suivre ma passion et de me former à plein temps dans ce domaine.\n
-Aujourd’hui, je conçois des applications web performantes et accessibles, avec une soif d’apprendre et une curiosité toujours tournée vers les nouvelles technologies.\n
+Aujourd’hui, je développe des applications web performantes et accessibles en utilisant la stack MERN, et je continue d'élargir mes compétences avec Next.js et TypeScript à travers de projets concrets.\n Je suis à la recherche d'une alternance qui me permettra de monter en compétence.
+
 Bonne visite et n’hésitez pas à me contacter pour échanger !`}
             />
             <Stack />
