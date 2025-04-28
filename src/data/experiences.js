@@ -5,6 +5,12 @@ export const experiences = [
     start: "2024-09",
     end: "2025-02",
   },
+  {
+    name: "Projets personnels",
+    color: "#10B981",
+    start: "2025-03",
+    end: "2025-05",
+  },
 ];
 
 export const months = [

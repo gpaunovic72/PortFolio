@@ -1,13 +1,16 @@
+import Ecommerce3 from "../assets/cart-ecommerce.webp";
 import Crossfit_Heiden_contact from "../assets/Crossfit_Heiden_contact.webp";
 import Crossfit_Heiden_kids from "../assets/Crossfit_Heiden_kids.webp";
 import Crossfit_Heiden_la_box from "../assets/Crossfit_Heiden_la_box.webp";
 import CrossFit_Heiden_page_accueil from "../assets/CrossFit_Heiden_page_accueil.webp";
 import Crossfit_Heiden_programmations from "../assets/Crossfit_Heiden_programmations.webp";
 import Crossfit_Heiden_tarifs_boutique from "../assets/Crossfit_Heiden_tarifs_boutique.webp";
+import Ecommerce1 from "../assets/homepage-ecommerce.webp";
 import Kasa1 from "../assets/Kasa-1.webp";
 import Kasa2 from "../assets/Kasa-2.webp";
 import Kasa3 from "../assets/Kasa-3.webp";
 import Kasa4 from "../assets/Kasa-4.webp";
+import Ecommerce4 from "../assets/login-ecommerce.webp";
 import MonVieuxGrimoire1 from "../assets/mon-vieux-grimoire-1.webp";
 import MonVieuxGrimoire2 from "../assets/mon-vieux-grimoire-2.webp";
 import MonVieuxGrimoire3 from "../assets/mon-vieux-grimoire-3.webp";
@@ -17,6 +20,8 @@ import NinaCarducci from "../assets/Nina Carducci.webp";
 import PortFolio2 from "../assets/Portfolio-1.webp";
 import PortFolio3 from "../assets/Portfolio-2.webp";
 import PortFolio1 from "../assets/Portfolio.webp";
+import Ecommerce2 from "../assets/products-ecommerce.webp";
+import Ecommerce5 from "../assets/signup-ecommerce.webp";
 import SophieBluel1 from "../assets/sophie-bluel-1.webp";
 import SophieBluel2 from "../assets/sophie-bluel-2.webp";
 import SophieBluel3 from "../assets/sophie-bluel-3.webp";
@@ -119,5 +124,20 @@ export const cards = [
     description:
       "Pour ce projet, ma mission était de créer mon portfolio, en veillant à ce qu’il soit responsive et accessible en ligne.\n\n J'ai rencontré des difficultés avec la fonction useExperiences pour gérer efficacement les années et les mois d'expérience. Pour résoudre ce problème, j'ai utilisé useMemo pour mémoriser les années extraites des expériences, ce qui a amélioré les performances en évitant des calculs répétitifs. De plus, j'ai optimisé la fonction isMonthColored pour déterminer la couleur des mois en fonction des dates de début et de fin des expériences, garantissant ainsi une meilleure réactivité de l'application.",
     lien: "https://github.com/gpaunovic72/PortFolio",
+  },
+  {
+    id: 7,
+    title: "Mon Site E-commerce",
+    date: "2025",
+    stacks: [
+      { color: "#CCCCCC", stack: "NextJS" },
+      { color: "#10B981", stack: "Prisma" },
+      { color: "#007ACC", stack: "TypeScript" },
+      { color: "#00758F", stack: "MySQL" },
+    ],
+    picture: [Ecommerce1, Ecommerce2, Ecommerce3, Ecommerce4, Ecommerce5],
+    description:
+      "Pour ce projet, j'ai développé un site e-commerce complet avec Next.js et TypeScript.\n\n Ce site intègre la gestion d'un panier d'achat, l'authentification des utilisateurs sécurisée via JWT, ainsi qu'une API REST créée avec Next.js App Router et Prisma pour la communication avec une base de données MySQL.\n\n L'un des défis majeurs a été de gérer le panier aussi bien pour les utilisateurs connectés que non connectés. J'ai mis en place un système de sessionId pour permettre aux visiteurs anonymes d'ajouter des articles au panier, tout en sécurisant les données côté serveur.\n\n Ce projet m'a permis de mieux comprendre la structuration d'une application web moderne et la séparation claire entre le Frontend et le Backend.",
+    lien: "https://github.com/gpaunovic72/Mon-Site-ECommerce",
   },
 ];
