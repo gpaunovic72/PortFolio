@@ -25,10 +25,15 @@ export default function Home() {
           <div className="pres">
             <Presentation
               title="BIENVENUE SUR MON PORTFOLIO"
-              text={`Je m’appelle Goran Paunovic, j’ai 37 ans et je suis passionné par le développement web et en pleine reconversion professionnelle. Après 8 ans dans le secteur des télécoms et des centaines de déplacements, j’ai décidé de suivre ma passion et de me former à plein temps dans ce domaine.\n
-Aujourd’hui, je développe des applications web performantes et accessibles en utilisant la stack MERN, et je continue d'élargir mes compétences avec Next.js et TypeScript à travers de projets concrets.\n Je suis à la recherche d'une alternance qui me permettra de monter en compétence.
+              text={`Je m’appelle Goran Paunovic, développeur web passionné, spécialisé dans la conception d'applications web modernes, performantes et accessibles.
+                
+Je conçois des interfaces soignées et des fonctionnalités robustes en m’appuyant sur des technologies comme React, Node.js, Prisma, MySQL, et Next.js.
 
-Bonne visite et n’hésitez pas à me contacter pour échanger !`}
+Chaque projet est pour moi une opportunité de progresser, d’appliquer les bonnes pratiques et de proposer des solutions efficaces, toujours avec sérieux et implication.
+
+Curieux, rigoureux et motivé, je m’investis pleinement dans chaque mission avec un souci constant de qualité et de fiabilité.
+
+Bonne visite, et n’hésitez pas à me contacter pour échanger ou collaborer !`}
             />
             <Stack />
           </div>

@@ -6,10 +6,16 @@ export const experiences = [
     end: "2025-02",
   },
   {
-    name: "Projets personnels",
-    color: "#10B981",
+    name: "CrossFit HEIDEN",
+    color: "#FFD700",
     start: "2025-03",
     end: "2025-05",
+  },
+  {
+    name: "Projets personnels",
+    color: "#10B981",
+    start: "2025-06",
+    end: "2025-07",
   },
 ];
 

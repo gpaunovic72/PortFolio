@@ -1,6 +1,23 @@
 @use "../../styles/variables.scss" as *;
 @use "../../styles/mixin.scss" as *;
 
+html {
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar personnalisée pour Chrome/Edge */
+::-webkit-scrollbar {
+  width: 8px;
+  background: $secondary-color;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-border;
+  border-radius: 4px;
+}
+
 .home {
   background: $secondary-color;
   margin-top: 3px;
