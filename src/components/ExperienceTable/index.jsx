@@ -35,15 +35,39 @@ export default function ExperienceTable() {
                     key={`${rowIndex}-${monthIndex}`}
                     className="month-boxes"
                   >
-                    {[...Array(5)].map((_, caseIndex) => (
-                      <span
-                        key={`${rowIndex}-${monthIndex}-${caseIndex}`}
-                        className="box"
-                        style={{
-                          backgroundColor: color ? color : "#161b22",
-                        }}
-                      ></span>
-                    ))}
+                    {[...Array(5)].map((_, caseIndex) => {
+                      let backgroundColor = "#161b22";
+                      let currentCase = 0;
+
+                      if (color && Array.isArray(color)) {
+                        // Plusieurs expériences ce mois-ci
+                        for (const exp of color) {
+                          if (
+                            caseIndex >= currentCase &&
+                            caseIndex < currentCase + exp.cases
+                          ) {
+                            backgroundColor = exp.color;
+                            break;
+                          }
+                          currentCase += exp.cases;
+                        }
+                      } else if (color && !Array.isArray(color)) {
+                        // Une seule expérience
+                        if (caseIndex < color.cases) {
+                          backgroundColor = color.color;
+                        }
+                      }
+
+                      return (
+                        <span
+                          key={`${rowIndex}-${monthIndex}-${caseIndex}`}
+                          className="box"
+                          style={{
+                            backgroundColor: backgroundColor,
+                          }}
+                        ></span>
+                      );
+                    })}
                   </div>
                 );
               })}
@@ -53,7 +77,7 @@ export default function ExperienceTable() {
       </div>
       <div className="experiences__data">
         {experiences.map((exp) => (
-          <div key={exp} className="experiences__data--exp">
+          <div key={exp.name} className="experiences__data--exp">
             <div className="color" style={{ backgroundColor: exp.color }} />
             <div className="text">{exp.name}</div>
           </div>

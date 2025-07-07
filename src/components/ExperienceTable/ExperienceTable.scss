@@ -87,9 +87,9 @@
     color: $color-text;
     width: 100%;
     display: flex;
-    gap: 20px;
-    padding-left: 80px;
-
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px;
     &--exp {
       display: flex;
       align-items: center;

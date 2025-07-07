@@ -25,6 +25,12 @@ export default function Links({ title }) {
             openLink("https://www.linkedin.com/in/goran-paunovic-41a978208/")
           }
         />
+        {/* <img
+          src={CV}
+          alt="Icon CV"
+          className="links__lien--cv"
+          onClick={() => openLink("/PortFolio/Goran_Paunovic_CV.pdf")}
+        /> */}
       </div>
     </div>
   );
