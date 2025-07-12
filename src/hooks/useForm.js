@@ -3,6 +3,7 @@ import { useState } from "react";
 import validator from "validator";
 
 export function useForm(closeModal) {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -27,10 +28,15 @@ export function useForm(closeModal) {
     }
 
     if (name === "username") {
+      const nameRegex = /^[a-zA-ZÀ-ÿ\s]+$/;
       setErrors((prevErrors) => ({
         ...prevErrors,
         nameError:
-          value.length >= 3 ? "" : "Le nom doit avoir au moins 3 caractères",
+          value.length >= 3
+            ? nameRegex.test(value)
+              ? ""
+              : "Le nom ne doit contenir que des lettres"
+            : "Le nom doit avoir au moins 3 caractères",
       }));
     }
 
@@ -65,6 +71,8 @@ export function useForm(closeModal) {
       return;
     }
 
+    setIsLoading(true);
+
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -75,8 +83,14 @@ export function useForm(closeModal) {
       .then(() => {
         setFormData({ username: "", email: "", message: "" });
         setErrors({ emailError: "", nameError: "", messageError: "" });
+        setIsLoading(false);
         closeModal();
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'envoi:", error);
+        setIsLoading(false);
+        alert("Erreur lors de l'envoi du message. Veuillez réessayer.");
       });
   };
-  return { formData, errors, handleChange, handleSubmit };
+  return { formData, errors, handleChange, handleSubmit, isLoading };
 }

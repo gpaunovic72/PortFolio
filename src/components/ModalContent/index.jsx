@@ -3,7 +3,9 @@ import { useForm } from "../../hooks/useForm";
 import "../ModalContent/ModalContent.scss";
 
 export default function ModalContent({ closeModal }) {
-  const { formData, errors, handleChange, handleSubmit } = useForm(closeModal);
+  const { formData, errors, handleChange, handleSubmit, isLoading } =
+    useForm(closeModal);
+
   return (
     <>
       <div onClick={closeModal} className="close" />
@@ -56,10 +58,13 @@ export default function ModalContent({ closeModal }) {
           )}
           <input
             type="submit"
-            value="Envoyer"
+            value={isLoading ? "Envoi en cours..." : "Envoyer"}
             className="modal__form--submit"
             disabled={
-              errors.emailError || errors.messageError || errors.nameError
+              errors.emailError ||
+              errors.messageError ||
+              errors.nameError ||
+              isLoading
             }
           />
         </form>
