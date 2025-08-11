@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import AdminPage from "./pages/Admin/index.jsx";
 import Footer from "./components/Footer/index.jsx";
 import Header from "./components/Header/index.jsx";
 import ScrollToTop from "./components/ScrollToTop/index.jsx";
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<Home />} />
         </Routes>
         <Footer />
