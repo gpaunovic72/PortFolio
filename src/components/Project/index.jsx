@@ -1,22 +1,26 @@
-import { cards } from "../../data/projectCard";
+import { useProjects } from "../../hooks/useProjects";
 import "../Project/Project.scss";
 import ProjectButton from "../ProjectButton";
 
 export default function Project() {
+  const { projects, loading, error } = useProjects();
+
   return (
     <div className="project" id="projects">
       <h2 className="project__title">Projets</h2>
       <hr className="project__separation" />
       <div className="project__cards">
-        {cards.map((card) => (
-          <div key={card.id} className="project__cards--card">
+        {loading && <div>Chargement des projets...</div>}
+        {error && <div>Erreur: {error}</div>}
+        {projects.map((project) => (
+          <div key={project.id} className="project__cards--card">
             <div className="cardElements">
               <div className="title">
-                <h3>{card.title}</h3>
-                <p>{card.date}</p>
+                <h3>{project.title}</h3>
+                <p>{project.date}</p>
               </div>
               <div className="card">
-                {card.stacks.map((tech, index) => (
+                {project.stacks.map((tech, index) => (
                   <span key={index} className="card__stack">
                     <div
                       style={{ backgroundColor: tech.color }}
@@ -28,7 +32,7 @@ export default function Project() {
               </div>
             </div>
             <div className="btnProject">
-              <ProjectButton project={card} />
+              <ProjectButton project={project} />
             </div>
           </div>
         ))}

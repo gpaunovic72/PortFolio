@@ -18,7 +18,7 @@ export const experiences = [
     color: "#FF0000",
     start: "2025-07-01",
     end: "2025-07-03",
-    priority: 2,
+    priority: 1,
   },
   {
     name: "Projets personnels",
