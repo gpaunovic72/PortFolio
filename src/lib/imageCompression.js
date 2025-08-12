@@ -11,29 +11,8 @@ const compressionOptions = {
 // Fonction pour compresser une image
 export const compressImage = async (file) => {
   try {
-    console.log("📦 Compression de l'image:", file.name);
-    console.log(
-      "📏 Taille originale:",
-      (file.size / 1024 / 1024).toFixed(2),
-      "MB"
-    );
-
     // Compression de l'image
     const compressedFile = await imageCompression(file, compressionOptions);
-
-    console.log("📦 Image compressée:", compressedFile.name);
-    console.log(
-      "📏 Taille compressée:",
-      (compressedFile.size / 1024 / 1024).toFixed(2),
-      "MB"
-    );
-
-    // Calcul du gain de compression
-    const compressionRatio = (
-      ((file.size - compressedFile.size) / file.size) *
-      100
-    ).toFixed(1);
-    console.log("📊 Gain de compression:", compressionRatio + "%");
 
     return compressedFile;
   } catch (error) {
@@ -51,7 +30,6 @@ export const compressImageWithOptions = async (file, options = {}) => {
   };
 
   try {
-    console.log("📦 Compression personnalisée de l'image:", file.name);
     const compressedFile = await imageCompression(file, customOptions);
     return compressedFile;
   } catch (error) {
@@ -86,7 +64,6 @@ export const optimizeImageForUsage = async (file, usage = "web") => {
   const options = usageOptions[usage] || usageOptions.web;
 
   try {
-    console.log(`📦 Optimisation pour ${usage}:`, file.name);
     const optimizedFile = await imageCompression(file, options);
     return optimizedFile;
   } catch (error) {

@@ -6,8 +6,6 @@ const BUCKET_NAME = "portfolio-images";
 // Fonctions pour gérer les images
 export const uploadImage = async (file, fileName) => {
   try {
-    console.log("📤 Upload de l'image:", fileName);
-
     const { data, error } = await supabase.storage
       .from(BUCKET_NAME)
       .upload(fileName, file, {
@@ -20,7 +18,6 @@ export const uploadImage = async (file, fileName) => {
       throw error;
     }
 
-    console.log("✅ Image uploadée avec succès:", data.path);
     return data;
   } catch (error) {
     console.error("❌ Erreur lors de l'upload:", error);
@@ -63,8 +60,6 @@ export const deleteImage = async (fileName) => {
       console.error("❌ Erreur suppression:", error);
       throw error;
     }
-
-    console.log("✅ Image supprimée:", fileName);
   } catch (error) {
     console.error("❌ Erreur lors de la suppression:", error);
     throw error;
