@@ -6,7 +6,7 @@ export default function Project() {
   const { projects, loading, error } = useProjects();
 
   return (
-    <div className="project" id="projects">
+    <div className="project">
       <h2 className="project__title">Projets</h2>
       <hr className="project__separation" />
       <div className="project__cards">

@@ -3,8 +3,19 @@ import PropTypes from "prop-types";
 
 export default function ProjectContent({ project }) {
   const contentVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { delay: 0.1 } },
+    hidden: {
+      opacity: 0,
+      y: 10,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        delay: 0.1,
+      },
+    },
   };
 
   return (

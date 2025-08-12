@@ -3,8 +3,23 @@ import PropTypes from "prop-types";
 
 export default function ProjectForm({ data, onUpdate }) {
   const formVariants = {
-    hidden: { opacity: 0, height: 0 },
-    visible: { opacity: 1, height: "auto" },
+    hidden: {
+      opacity: 0,
+      height: 0,
+      y: -10,
+    },
+    visible: {
+      opacity: 1,
+      height: "auto",
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        opacity: { duration: 0.2 },
+        height: { duration: 0.3 },
+        y: { duration: 0.3 },
+      },
+    },
   };
 
   return (

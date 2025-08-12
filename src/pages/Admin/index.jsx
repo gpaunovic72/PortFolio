@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProjects } from "../../hooks/useProjects";
+import { supabase } from "../../lib/supabase";
 import "./Admin.scss";
 import DashboardHeader from "./components/DashboardHeader";
 import LoginForm from "./components/LoginForm";
@@ -9,33 +10,58 @@ export default function AdminPage() {
   const { projects, loading, error } = useProjects();
   const [message, setMessage] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
-  // Si pas connecté, afficher le formulaire de connexion
-  if (!isAuthenticated) {
-    return <LoginForm onLoginSuccess={() => setIsAuthenticated(true)} />;
-  }
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        setIsAuthenticated(!!session);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la vérification de l'authentification:",
+          error
+        );
+        setIsAuthenticated(false);
+      } finally {
+        setIsCheckingAuth(false);
+      }
+    };
 
-  // Si en cours de chargement des projets
-  if (loading) {
-    return (
-      <div style={{ color: "#c9d1d9", padding: "2rem" }}>Chargement...</div>
-    );
-  }
+    checkAuth();
+  }, []);
 
-  // Si erreur lors du chargement des projets
-  if (error) {
-    return (
-      <div style={{ color: "#da3633", padding: "2rem" }}>Erreur: {error}</div>
-    );
-  }
+  const renderLoadingSpinner = () => (
+    <div className="auth-loading">
+      <div className="spinner"></div>
+      <p>Vérification de l&apos;authentification...</p>
+    </div>
+  );
+
+  const renderError = () => (
+    <div className="error-message">Erreur: {error}</div>
+  );
+
+  const renderLoading = () => (
+    <div className="loading-message">Chargement...</div>
+  );
 
   return (
-    <div className="admin-page">
-      {/* En-tête et messages */}
-      <DashboardHeader onLogout={setMessage} message={message} />
-
-      {/* Gestion des projets */}
-      <ProjectManager projects={projects} onProjectUpdate={setMessage} />
-    </div>
+    <>
+      {isCheckingAuth && renderLoadingSpinner()}
+      {!isCheckingAuth && !isAuthenticated && (
+        <LoginForm onLoginSuccess={() => setIsAuthenticated(true)} />
+      )}
+      {!isCheckingAuth && isAuthenticated && loading && renderLoading()}
+      {!isCheckingAuth && isAuthenticated && error && renderError()}
+      {!isCheckingAuth && isAuthenticated && !loading && !error && (
+        <div className="admin-page">
+          <DashboardHeader onLogout={setMessage} message={message} />
+          <ProjectManager projects={projects} onProjectUpdate={setMessage} />
+        </div>
+      )}
+    </>
   );
 }

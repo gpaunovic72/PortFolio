@@ -1,18 +1,12 @@
 @use "../../styles/variables.scss" as *;
 @use "../../styles/mixin.scss" as *;
 
-.headroom {
-  transition: transform 0.3s ease-in-out;
-}
-
-.headroom--unpinned {
-  transform: translateY(-100%);
-}
-
-.headroom--pinned {
-  transform: translateY(0);
-}
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   width: 100%;
   max-width: 1440px;
   height: 120px;

@@ -3,7 +3,7 @@ import ExperienceTable from "../../components/ExperienceTable";
 import Links from "../../components/Links";
 import ModalButton from "../../components/ModalButton";
 import PictureProfile from "../../components/PictureProfile";
-import Presentation from "../../components/presentation";
+import Presentation from "../../components/Presentation";
 import Contact from "../../components/Profil";
 import Project from "../../components/Project";
 import Stack from "../../components/Stack";
@@ -12,7 +12,7 @@ import "../Home/Home.scss";
 export default function Home() {
   return (
     <div className="home">
-      <section className="home__about">
+      <section id="presentation" className="home__about">
         <div className="home__about--profil">
           <PictureProfile picture={Picture} name="Goran Paunovic" />
           <Contact name="Goran Paunovic" text="Développeur Web" />
@@ -39,14 +39,17 @@ Bonne visite, et n'hésitez pas à me contacter pour échanger ou collaborer !`}
           </div>
         </div>
       </section>
-      <section className="home__career">
+      <section id="experiences" className="home__career">
         <div className="home__career--exp">
           <ExperienceTable />
         </div>
+      </section>
+      <section id="projects" className="home__career">
         <div className="home__career--project">
           <Project />
         </div>
       </section>
+      <section id="contact" className="home__contact"></section>
     </div>
   );
 }

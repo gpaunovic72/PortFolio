@@ -16,9 +16,27 @@ export default function ProjectCard({
   onUpdateEditingData,
 }) {
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-    hover: { y: -4, transition: { duration: 0.2 } },
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+        opacity: { duration: 0.3 },
+        y: { duration: 0.4 },
+        scale: { duration: 0.3 },
+      },
+    },
+    hover: {
+      y: -4,
+      scale: 1.02,
+      transition: {
+        duration: 0.2,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -90,11 +108,19 @@ export default function ProjectCard({
       </div>
 
       {/* Contenu du projet */}
-      {isEditing ? (
-        <ProjectForm data={editingData} onUpdate={onUpdateEditingData} />
-      ) : (
-        <ProjectContent project={project} />
-      )}
+      <motion.div
+        key={isEditing ? "editing" : "viewing"}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        {isEditing ? (
+          <ProjectForm data={editingData} onUpdate={onUpdateEditingData} />
+        ) : (
+          <ProjectContent project={project} />
+        )}
+      </motion.div>
 
       {/* Gestionnaire d'images intégré dans chaque carte */}
       <ProjectImageManager project={project} />

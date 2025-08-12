@@ -7,6 +7,7 @@ export default function DashboardHeader({ onLogout, message }) {
     try {
       await supabase.auth.signOut();
       onLogout("Déconnexion réussie");
+      window.location.reload();
     } catch {
       onLogout("Erreur de déconnexion");
     }
