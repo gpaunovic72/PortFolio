@@ -24,7 +24,7 @@ export default function Header() {
     },
     { href: "/#projects", id: "projects", label: "Projets", icon: Projets },
     {
-      href: "/#experiences",
+      href: "/experience",
       id: "experiences",
       label: "Expériences",
       icon: Experiences,
@@ -58,10 +58,15 @@ export default function Header() {
                   activeLink === id ? "active" : ""
                 }`}
                 onClick={(e) => {
-                  e.preventDefault();
-                  setActiveLink(id);
-                  closeMenu();
-                  navigateToSection(id);
+                  if (href.startsWith("/#")) {
+                    e.preventDefault();
+                    setActiveLink(id);
+                    closeMenu();
+                    navigateToSection(id);
+                  } else {
+                    setActiveLink(id);
+                    closeMenu();
+                  }
                 }}
               >
                 {label}

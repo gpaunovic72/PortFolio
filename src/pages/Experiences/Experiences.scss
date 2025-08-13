@@ -1,0 +1,84 @@
+.experiences-page {
+  padding: 2rem;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  min-height: 100vh;
+  color: #c9d1d9;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  // Header
+  .experiences-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #8b949e;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  // Contenu principal
+  .experiences-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  // États de chargement et d'erreur
+  .loading-state,
+  .error-state,
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    text-align: center;
+
+    p {
+      font-size: 1.1rem;
+      color: #8b949e;
+      margin-top: 1rem;
+    }
+  }
+
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #30363d;
+    border-top: 3px solid #58a6ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .error-state p {
+    color: #da3633;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,14 +1,12 @@
-import { RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useExperiences } from "../../hooks/useExperiences";
 import "../ExperienceTable/ExperienceTable.scss";
 
 export default function ExperienceTable() {
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [localExperiences, setLocalExperiences] = useState([]);
 
   const { experiences, months, years, isMonthColored, loading, error } =
-    useExperiences(refreshTrigger);
+    useExperiences(0);
 
   // Synchroniser les expériences locales
   useEffect(() => {
@@ -78,14 +76,19 @@ export default function ExperienceTable() {
   // FONCTIONS UTILITAIRES
 
   const getCaseColor = (monthPeriods, caseIndex) => {
-    if (!monthPeriods || !Array.isArray(monthPeriods)) {
+    const isValidPeriods = monthPeriods && Array.isArray(monthPeriods);
+
+    if (!isValidPeriods) {
       return "#161b22"; // Couleur par défaut
     }
 
     let currentCase = 0;
 
     for (const period of monthPeriods) {
-      if (caseIndex >= currentCase && caseIndex < currentCase + period.cases) {
+      const isInRange =
+        caseIndex >= currentCase && caseIndex < currentCase + period.cases;
+
+      if (isInRange) {
         return period.color;
       }
       currentCase += period.cases;
@@ -96,51 +99,39 @@ export default function ExperienceTable() {
 
   // ÉTATS DE CHARGEMENT ET D'ERREUR
 
-  if (loading) {
-    return (
+  const renderContent = () => {
+    const isLoading = loading;
+    const hasError = error;
+
+    return isLoading ? (
       <div className="experiences">
         <h2 className="experiences__title">Expériences</h2>
         <hr className="experiences__separation" />
         <div className="loading">Chargement des expériences...</div>
       </div>
-    );
-  }
-
-  if (error) {
-    return (
+    ) : hasError ? (
       <div className="experiences">
         <h2 className="experiences__title">Expériences</h2>
         <hr className="experiences__separation" />
         <div className="error">Erreur: {error}</div>
       </div>
+    ) : (
+      <div className="experiences">
+        <h2 className="experiences__title">Expériences</h2>
+        <hr className="experiences__separation" />
+
+        <div className="experiences__table">
+          <MonthHeader />
+          <YearHeader />
+          <TimelineGrid />
+        </div>
+
+        <Legend />
+      </div>
     );
-  }
+  };
 
   // RENDU PRINCIPAL
 
-  return (
-    <div className="experiences">
-      <div className="experiences__header">
-        <h2 className="experiences__title">Expériences</h2>
-        <button
-          onClick={() => setRefreshTrigger((prev) => prev + 1)}
-          className="refresh-btn"
-          title="Actualiser le tableau"
-        >
-          <RefreshCw size={16} />
-          Actualiser
-        </button>
-      </div>
-
-      <hr className="experiences__separation" />
-
-      <div className="experiences__table">
-        <MonthHeader />
-        <YearHeader />
-        <TimelineGrid />
-      </div>
-
-      <Legend />
-    </div>
-  );
+  return renderContent();
 }
