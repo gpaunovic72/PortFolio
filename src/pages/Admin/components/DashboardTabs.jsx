@@ -1,5 +1,6 @@
 import { BarChart3, Briefcase, Calendar } from "lucide-react";
 import PropTypes from "prop-types";
+import "./DashboardTabs.scss";
 
 export default function DashboardTabs({ activeTab, onTabChange }) {
   const tabs = [

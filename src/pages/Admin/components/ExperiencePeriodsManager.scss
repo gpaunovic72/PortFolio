@@ -1,0 +1,204 @@
+// STYLES POUR LE GESTIONNAIRE DE PÉRIODES D'EXPÉRIENCES
+.experience-periods-manager {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1c2128;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+
+  .periods-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h4 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      color: #f0f6fc;
+      font-size: 16px;
+    }
+
+    .add-period-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: #238636;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: #2ea043;
+      }
+    }
+  }
+
+  .period-form {
+    background: #21262d;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #30363d;
+
+    h5 {
+      margin: 0 0 16px 0;
+      color: #f0f6fc;
+      font-size: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: #8b949e;
+        font-size: 12px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px 12px;
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 4px;
+        color: #f0f6fc;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+          border-color: #58a6ff;
+        }
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 16px;
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &.cancel-btn {
+          background: #21262d;
+          color: #8b949e;
+          border: 1px solid #30363d;
+
+          &:hover {
+            background: #30363d;
+          }
+        }
+
+        &.submit-btn {
+          background: #238636;
+          color: white;
+
+          &:hover {
+            background: #2ea043;
+          }
+        }
+      }
+    }
+  }
+
+  .periods-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .period-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: #21262d;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+
+      .period-info {
+        flex: 1;
+
+        .period-dates {
+          color: #f0f6fc;
+          font-size: 14px;
+          margin-bottom: 4px;
+        }
+
+        .period-description {
+          color: #8b949e;
+          font-size: 13px;
+          margin-bottom: 4px;
+        }
+
+        .period-priority {
+          color: #7c3aed;
+          font-size: 12px;
+        }
+      }
+
+      .period-actions {
+        display: flex;
+        gap: 8px;
+
+        button {
+          padding: 6px;
+          background: transparent;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+
+          &.edit-btn {
+            color: #58a6ff;
+
+            &:hover {
+              background: rgba(88, 166, 255, 0.1);
+            }
+          }
+
+          &.delete-btn {
+            color: #f85149;
+
+            &:hover {
+              background: rgba(248, 81, 73, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .no-periods {
+    text-align: center;
+    padding: 20px;
+    color: #8b949e;
+    font-size: 14px;
+
+    p {
+      margin: 4px 0;
+    }
+  }
+}

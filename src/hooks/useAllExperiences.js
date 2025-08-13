@@ -19,7 +19,6 @@ export function useAllExperiences(refreshTrigger = 0) {
           .order("priority", { ascending: false });
 
         if (error) throw error;
-
         setExperiences(data || []);
       } catch (err) {
         setError(err.message);

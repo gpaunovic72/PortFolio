@@ -1,0 +1,161 @@
+// STYLES POUR LE FORMULAIRE D'ÉDITION D'EXPÉRIENCES
+.experience-edit-form {
+  background: #1c2128;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  margin-bottom: 20px;
+
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #30363d;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      color: #f0f6fc;
+      font-size: 18px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &.cancel-btn {
+          background: #21262d;
+          color: #8b949e;
+          border: 1px solid #30363d;
+
+          &:hover {
+            background: #30363d;
+          }
+        }
+
+        &.save-btn {
+          background: #238636;
+          color: white;
+
+          &:hover {
+            background: #2ea043;
+          }
+        }
+      }
+    }
+  }
+
+  form {
+    padding: 20px;
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #8b949e;
+        font-size: 14px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        color: #f0f6fc;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+          border-color: #58a6ff;
+        }
+
+        &[type="color"] {
+          height: 40px;
+          padding: 4px;
+        }
+
+        &[type="number"] {
+          width: 100px;
+        }
+      }
+
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        color: #f0f6fc;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e7681' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+        padding-right: 40px;
+
+        &:focus {
+          outline: none;
+          border-color: #58a6ff;
+          box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        &:hover {
+          border-color: #484f58;
+          background: #161b22;
+        }
+
+        option {
+          background: #0d1117;
+          color: #f0f6fc;
+          padding: 8px 12px;
+
+          &:hover {
+            background: #1f6feb;
+          }
+        }
+      }
+
+      &.checkbox {
+        label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+
+          input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

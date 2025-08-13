@@ -2,6 +2,7 @@ import { Loader2, Plus, X } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { supabase } from "../../../lib/supabase";
+import "./ExperienceForm.scss";
 
 export default function ExperienceForm({ onExperienceAdded }) {
   const [isOpen, setIsOpen] = useState(false);

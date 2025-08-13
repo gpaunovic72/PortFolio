@@ -2,6 +2,7 @@ import { AlertTriangle, Lock } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { supabase } from "../../../lib/supabase";
+import "./LoginForm.scss";
 
 export default function LoginForm({ onLoginSuccess }) {
   const [email, setEmail] = useState("");

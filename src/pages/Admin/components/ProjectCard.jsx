@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Edit, Save, Trash2, X } from "lucide-react";
 import PropTypes from "prop-types";
 import ProjectImageManager from "../../../components/ProjectImageManager";
+import "./ProjectCard.scss";
 import ProjectContent from "./ProjectContent";
 import ProjectForm from "./ProjectForm";
 

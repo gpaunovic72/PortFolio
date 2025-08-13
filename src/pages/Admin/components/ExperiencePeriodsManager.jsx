@@ -1,6 +1,7 @@
 import { Calendar, Edit, Plus, Trash2 } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./ExperiencePeriodsManager.scss";
 
 export default function ExperiencePeriodsManager({
   periods = [],

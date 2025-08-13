@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import "./ProjectForm.scss";
 
 export default function ProjectForm({ data, onUpdate }) {
   const formVariants = {

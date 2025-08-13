@@ -5,6 +5,7 @@ import { useAllExperiences } from "../../../hooks/useAllExperiences";
 import { supabase } from "../../../lib/supabase";
 import ExperienceEditForm from "./ExperienceEditForm";
 import ExperienceForm from "./ExperienceForm";
+import "./ExperienceManager.scss";
 
 export default function ExperienceManager({ onMessage }) {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
