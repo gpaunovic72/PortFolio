@@ -90,6 +90,9 @@ export default function ProjectCard({
                   onEdit(project.id, {
                     title: project.title,
                     description: project.description,
+                    date: project.date,
+                    stacks: project.stacks || [],
+                    picture: project.picture || [],
                   })
                 }
               >

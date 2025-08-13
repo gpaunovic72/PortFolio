@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import DownloadPDFButton from "../../components/DownloadPDFButton";
 import { useAllExperiences } from "../../hooks/useAllExperiences";
 import ExperienceModal from "./components/ExperienceModal";
 import ExperienceTimeline from "./components/ExperienceTimeline";
@@ -35,8 +36,16 @@ export default function Experiences() {
     <div className="experiences-page">
       {/* Header */}
       <div className="experiences-header">
-        <h1>Expériences Professionnelles</h1>
-        <p>Mon parcours et mes réalisations techniques</p>
+        <div className="header-content">
+          <div className="header-text">
+            <h1>Expériences Professionnelles</h1>
+            <p>Mon parcours et mes réalisations techniques</p>
+          </div>
+          <DownloadPDFButton
+            experiences={sortedExperiences}
+            className="header-download-btn"
+          />
+        </div>
       </div>
 
       {/* Timeline des expériences */}

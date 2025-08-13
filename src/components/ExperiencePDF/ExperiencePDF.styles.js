@@ -1,0 +1,118 @@
+import { StyleSheet } from "@react-pdf/renderer";
+
+export const styles = StyleSheet.create({
+  page: {
+    padding: 20,
+    fontSize: 12,
+    fontFamily: "Helvetica",
+    size: "A4",
+    orientation: "portrait",
+  },
+  header: {
+    marginBottom: 20,
+    textAlign: "center",
+    borderBottom: "2 solid #7451EB",
+    paddingBottom: 12,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#7451EB",
+    marginBottom: 6,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 4,
+  },
+  experienceCard: {
+    marginBottom: 20,
+    padding: 15,
+    border: "1 solid #e0e0e0",
+    borderRadius: 8,
+    backgroundColor: "#fafafa",
+  },
+  experienceHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 12,
+    gap: 15,
+  },
+  experienceTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#333",
+    flex: 1,
+  },
+  company: {
+    fontSize: 16,
+    color: "#7451EB",
+    fontWeight: "bold",
+  },
+  period: {
+    fontSize: 12,
+    color: "#666",
+    fontStyle: "italic",
+  },
+  description: {
+    fontSize: 12,
+    lineHeight: 1.5,
+    color: "#444",
+    marginBottom: 12,
+    whiteSpace: "pre-line",
+  },
+  technologies: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 5,
+  },
+  techBadge: {
+    backgroundColor: "#7451EB",
+    color: "white",
+    padding: "4 8",
+    borderRadius: 4,
+    fontSize: 10,
+    marginRight: 5,
+    marginBottom: 5,
+  },
+  typeBadge: {
+    backgroundColor: "#28a745",
+    color: "white",
+    padding: "2 6",
+    borderRadius: 3,
+    fontSize: 10,
+    marginLeft: 10,
+  },
+  devBadge: {
+    backgroundColor: "#ffc107",
+    color: "#333",
+    padding: "3 8",
+    borderRadius: 4,
+    fontSize: 10,
+    fontWeight: "bold",
+    alignSelf: "flex-start",
+    marginTop: 3,
+  },
+  periodsSection: {
+    marginTop: 10,
+  },
+  periodItem: {
+    marginBottom: 5,
+    paddingLeft: 10,
+  },
+  pageNumber: {
+    position: "absolute",
+    bottom: 20,
+    left: 30,
+    right: 30,
+    textAlign: "center",
+    fontSize: 10,
+    color: "#666",
+  },
+  periodsRight: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+    minWidth: 200,
+  },
+});

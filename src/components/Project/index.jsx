@@ -17,7 +17,6 @@ export default function Project() {
             <div className="cardElements">
               <div className="title">
                 <h3>{project.title}</h3>
-                <p>{project.date}</p>
               </div>
               <div className="card">
                 {project.stacks.map((tech, index) => (

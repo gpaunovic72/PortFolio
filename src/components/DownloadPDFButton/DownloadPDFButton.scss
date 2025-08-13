@@ -1,0 +1,82 @@
+.download-pdf-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #7451eb 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(116, 81, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(116, 81, 235, 0.4);
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(116, 81, 235, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(116, 81, 235, 0.2);
+  }
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover:not(:disabled) svg {
+    transform: translateY(-1px);
+  }
+
+  // Animation de chargement
+  &:disabled::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .download-pdf-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
