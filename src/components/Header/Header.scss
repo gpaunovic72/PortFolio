@@ -81,10 +81,22 @@
       color: $color-title;
       font-size: $font-size-title-mobile;
       font-weight: $font-weight-medium;
-      @include hover-effect($color-hover-liens);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        transform: translateY(-1px);
+      }
 
       &.active {
-        color: $color-hover-liens;
+        background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 600;
       }
     }
 
@@ -125,6 +137,23 @@
 
       &--element {
         font-size: $font-size-title-tab;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          transform: translateY(-1px);
+        }
+
+        &.active {
+          background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 600;
+        }
       }
     }
   }

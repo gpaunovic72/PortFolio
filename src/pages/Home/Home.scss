@@ -38,21 +38,37 @@ body {
     @include flex-center;
     flex-direction: column;
     margin-top: 20px;
-    gap: 15px;
+    gap: 25px;
     @include transition;
 
     &--profil {
       @include flex-center;
       flex-direction: column;
-      gap: 15px;
-      padding: 10px;
+      gap: 20px;
+      padding: 25px;
       width: 90%;
-      @include transition;
+      border: 2px solid $color-border;
+      border-radius: 12px;
+      background: rgba(22, 27, 34, 0.6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #58a6ff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        transform: translateY(-2px);
+      }
 
       .separation {
         width: 200px;
         border: 2px solid $color-border;
-        @include transition;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #58a6ff;
+          box-shadow: 0 4px 8px rgba(88, 166, 255, 0.2);
+        }
       }
     }
 
@@ -92,16 +108,34 @@ body {
       .pres {
         @include flex-center;
         flex-direction: column;
-        border-top: 3px solid $color-border;
-        border-bottom: 3px solid $color-border;
-        gap: 15px;
-        @include transition;
+        border: 2px solid $color-border;
+        border-radius: 12px;
+        gap: 20px;
+        padding: 25px;
+        background: rgba(22, 27, 34, 0.6);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #58a6ff;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+          transform: translateY(-2px);
+        }
 
         @include tablet {
           width: 100%;
-          border: 3px solid $color-border;
-          border-radius: 30px;
-          padding: 20px;
+          border: 2px solid $color-border;
+          border-radius: 12px;
+          padding: 25px;
+          background: rgba(22, 27, 34, 0.6);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: #58a6ff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+          }
         }
       }
     }
@@ -110,7 +144,7 @@ body {
   &__career {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     @include transition;
 
     &--exp {
@@ -121,15 +155,33 @@ body {
       width: 100%;
       @include flex-center;
       flex-direction: column;
-      border-top: 3px solid $color-border;
+      border: 2px solid $color-border;
+      border-radius: 12px;
+      padding: 25px;
+      background: rgba(22, 27, 34, 0.6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #58a6ff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        transform: translateY(-2px);
+      }
 
       @include tablet {
-        border-top: none;
-        border: 3px solid $color-border;
-        border-radius: 30px;
-        padding: 20px;
+        border: 2px solid $color-border;
+        border-radius: 12px;
+        padding: 25px;
         margin-bottom: 30px;
-        @include transition;
+        background: rgba(22, 27, 34, 0.6);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #58a6ff;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+          transform: translateY(-2px);
+        }
       }
     }
 

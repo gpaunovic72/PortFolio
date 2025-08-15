@@ -30,6 +30,9 @@ export default function Project() {
                 ))}
               </div>
             </div>
+            <div className="projectYear">
+              {new Date(project.created_at).getFullYear()}
+            </div>
             <div className="btnProject">
               <ProjectButton project={project} />
             </div>
