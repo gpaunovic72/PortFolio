@@ -1,30 +1,8 @@
-import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 export default function ProjectContent({ project }) {
-  const contentVariants = {
-    hidden: {
-      opacity: 0,
-      y: 10,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-        delay: 0.1,
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className="project-card__content"
-      variants={contentVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className="project-card__content">
       <p className="description">
         <strong>Description :</strong>
       </p>
@@ -32,8 +10,16 @@ export default function ProjectContent({ project }) {
       <p className="project-meta">
         <strong>Date :</strong> {project.date} | <strong>Images :</strong>{" "}
         {project.picture?.length || 0}
+        {(project.github_link || project.live_link) && (
+          <>
+            <br />
+            <strong>Liens :</strong> {project.github_link && "GitHub "}
+            {project.github_link && project.live_link && "| "}
+            {project.live_link && "Site"}
+          </>
+        )}
       </p>
-    </motion.div>
+    </div>
   );
 }
 

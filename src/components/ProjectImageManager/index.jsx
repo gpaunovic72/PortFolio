@@ -52,8 +52,18 @@ export default function ProjectImageManager({ project, onImagesUpdated }) {
 
       setMessage("Image ajoutée au projet avec succès !");
       onImagesUpdated && onImagesUpdated(updatedImages);
+
+      // Nettoyer le message après 3 secondes
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     } catch (error) {
       setMessage(`Erreur: ${error.message}`);
+
+      // Nettoyer le message d'erreur après 5 secondes
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     } finally {
       setUploading(false);
     }
@@ -63,9 +73,12 @@ export default function ProjectImageManager({ project, onImagesUpdated }) {
     try {
       setMessage("Suppression en cours...");
 
-      const fileName = imageUrl.split("/").pop().split("?")[0];
-      await deleteImage(fileName);
+      // Extraction et décodage du nom de fichier
+      const urlParts = imageUrl.split("/");
+      const encodedFileName = urlParts[urlParts.length - 1].split("?")[0];
+      const fileName = decodeURIComponent(encodedFileName);
 
+      // Mise à jour de la base de données AVANT la suppression
       const currentImages = project.picture || [];
       const updatedImages = currentImages.filter((_, i) => i !== index);
 
@@ -76,10 +89,27 @@ export default function ProjectImageManager({ project, onImagesUpdated }) {
 
       if (error) throw error;
 
+      // Suppression du fichier dans Supabase Storage APRÈS la mise à jour
+      await deleteImage(fileName);
+
+      // Petit délai pour laisser Supabase se synchroniser
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       setMessage("Image supprimée avec succès !");
       onImagesUpdated && onImagesUpdated(updatedImages);
+
+      // Nettoyer le message après 3 secondes
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     } catch (error) {
+      console.error("Erreur lors de la suppression:", error);
       setMessage(`Erreur: ${error.message}`);
+
+      // Nettoyer le message d'erreur après 5 secondes
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     }
   };
 

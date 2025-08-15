@@ -6,19 +6,14 @@ export default function ProjectForm({ data, onUpdate }) {
   const formVariants = {
     hidden: {
       opacity: 0,
-      height: 0,
-      y: -10,
+      y: -20,
     },
     visible: {
       opacity: 1,
-      height: "auto",
       y: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.2,
         ease: "easeOut",
-        opacity: { duration: 0.2 },
-        height: { duration: 0.3 },
-        y: { duration: 0.3 },
       },
     },
   };
@@ -76,7 +71,7 @@ export default function ProjectForm({ data, onUpdate }) {
         <textarea
           value={data.description || ""}
           onChange={(e) => onUpdate({ ...data, description: e.target.value })}
-          rows={4}
+          rows={10}
           placeholder="Description du projet..."
         />
       </div>
@@ -118,20 +113,25 @@ export default function ProjectForm({ data, onUpdate }) {
         </div>
       </div>
 
-      <div className="form-field">
-        <label>Images (URLs séparées par des virgules) :</label>
-        <textarea
-          value={Array.isArray(data.picture) ? data.picture.join(", ") : ""}
-          onChange={(e) => {
-            const urls = e.target.value
-              .split(",")
-              .map((url) => url.trim())
-              .filter((url) => url);
-            onUpdate({ ...data, picture: urls });
-          }}
-          rows={3}
-          placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
-        />
+      <div className="form-row">
+        <div className="form-field">
+          <label>Lien GitHub :</label>
+          <input
+            type="text"
+            value={data.github_link || ""}
+            onChange={(e) => onUpdate({ ...data, github_link: e.target.value })}
+            placeholder="https://github.com/username/repo"
+          />
+        </div>
+        <div className="form-field">
+          <label>Lien du site :</label>
+          <input
+            type="text"
+            value={data.live_link || ""}
+            onChange={(e) => onUpdate({ ...data, live_link: e.target.value })}
+            placeholder="https://example.com"
+          />
+        </div>
       </div>
     </motion.div>
   );

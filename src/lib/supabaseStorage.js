@@ -51,17 +51,13 @@ export const listImages = async () => {
 
 // Supprimer une image
 export const deleteImage = async (fileName) => {
-  try {
-    const { error } = await supabase.storage
-      .from(BUCKET_NAME)
-      .remove([fileName]);
+  const { data, error } = await supabase.storage
+    .from(BUCKET_NAME)
+    .remove([fileName]);
 
-    if (error) {
-      console.error("❌ Erreur suppression:", error);
-      throw error;
-    }
-  } catch (error) {
-    console.error("❌ Erreur lors de la suppression:", error);
+  if (error) {
     throw error;
   }
+
+  return data;
 };

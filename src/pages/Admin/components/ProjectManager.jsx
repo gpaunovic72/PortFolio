@@ -16,6 +16,8 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
     date: "",
     stacks: [],
     picture: [],
+    github_link: "",
+    live_link: "",
   });
 
   // Synchroniser les projets quand ils changent
@@ -97,6 +99,32 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
     }));
   };
 
+  // Fonction pour mettre à jour les images d'un projet
+  const handleUpdateProjectImages = async (projectId, updatedImages) => {
+    try {
+      // Mettre à jour dans la base de données
+      const { error } = await supabase
+        .from("projects")
+        .update({ picture: updatedImages })
+        .eq("id", projectId);
+
+      if (error) throw error;
+
+      // Mettre à jour le state local
+      setLocalProjects((prevProjects) =>
+        prevProjects.map((project) =>
+          project.id === projectId
+            ? { ...project, picture: updatedImages }
+            : project
+        )
+      );
+
+      onProjectUpdate("✅ Images mises à jour avec succès !");
+    } catch (error) {
+      onProjectUpdate(`❌ Erreur: ${error.message}`);
+    }
+  };
+
   // Fonction pour ajouter un nouveau projet
   const handleAddProject = async () => {
     try {
@@ -115,6 +143,8 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
         date: "",
         stacks: [],
         picture: [],
+        github_link: "",
+        live_link: "",
       });
       setIsAddingProject(false);
       onProjectUpdate("✅ Projet ajouté avec succès !");
@@ -132,6 +162,8 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
       date: "",
       stacks: [],
       picture: [],
+      github_link: "",
+      live_link: "",
     });
   };
 
@@ -140,7 +172,7 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -163,10 +195,10 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
       {isAddingProject && (
         <motion.div
           className="add-project-form"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <div className="form-header">
             <h3>Nouveau projet</h3>
@@ -206,6 +238,7 @@ export default function ProjectManager({ projects, onProjectUpdate }) {
               onSave={handleUpdateProject}
               onCancel={handleCancelEdit}
               onUpdateEditingData={handleUpdateEditingData}
+              onUpdateImages={handleUpdateProjectImages}
             />
           ))}
         </AnimatePresence>
