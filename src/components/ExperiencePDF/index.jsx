@@ -7,13 +7,14 @@ import { cleanExperiencesData } from "./utils/dataCleaner";
 
 const ExperiencePDF = ({ experiences }) => {
   const validExperiences = cleanExperiencesData(experiences);
+  // Pas de division manuelle - laisser react-pdf gérer la pagination automatiquement
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <PDFHeader />
 
-        {/* Liste des expériences */}
+        {/* Liste des expériences - pagination automatique */}
         {validExperiences.map((experience, index) => (
           <ExperienceCard
             key={experience.id || index}

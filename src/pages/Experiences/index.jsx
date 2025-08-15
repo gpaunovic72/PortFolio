@@ -12,15 +12,21 @@ export default function Experiences() {
   // Trier les expériences par date (plus récentes en premier)
   const sortedExperiences = useMemo(() => {
     return [...experiences].sort((a, b) => {
-      const dateA =
-        a.periods && a.periods.length > 0
-          ? new Date(a.periods[0].start_date)
-          : new Date(a.start_date);
-      const dateB =
-        b.periods && b.periods.length > 0
-          ? new Date(b.periods[0].start_date)
-          : new Date(b.start_date);
-      return dateB - dateA;
+      // Fonction pour obtenir la date la plus récente d'une expérience
+      const getLatestDate = (experience) => {
+        if (experience.periods && experience.periods.length > 0) {
+          // Pour les périodes, prendre la date de fin de la dernière période
+          const lastPeriod = experience.periods[experience.periods.length - 1];
+          return new Date(lastPeriod.end_date);
+        }
+        // Pour les expériences simples, prendre la date de fin
+        return new Date(experience.end_date || experience.start_date);
+      };
+
+      const dateA = getLatestDate(a);
+      const dateB = getLatestDate(b);
+
+      return dateB - dateA; // Plus récent en premier
     });
   }, [experiences]);
 

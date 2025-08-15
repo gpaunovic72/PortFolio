@@ -13,13 +13,19 @@ export default function ExperienceModal({ experience, onClose }) {
   const getDateRange = () => {
     if (experience.periods && experience.periods.length > 0) {
       return experience.periods.map((period, index) => (
-        <span key={index} className="period-item">
-          <strong>{period.description}</strong>
-          <span className="period-dates">
-            {formatDate(period.start_date)} - {formatDate(period.end_date)}
-          </span>
-          {index < experience.periods.length - 1 && <br />}
-        </span>
+        <div key={index} className="period-item">
+          <div className="period-header">
+            <strong>{period.description?.split("\n")[0]}</strong>
+            <span className="period-dates">
+              {formatDate(period.start_date)} - {formatDate(period.end_date)}
+            </span>
+          </div>
+          {period.description && period.description.split("\n").length > 1 && (
+            <div className="period-description">
+              {period.description.split("\n").slice(1).join("\n")}
+            </div>
+          )}
+        </div>
       ));
     }
     return (

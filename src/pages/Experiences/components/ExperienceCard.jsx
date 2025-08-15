@@ -29,8 +29,8 @@ export default function ExperienceCard({ experience, onClick }) {
       <div className="card-content">
         <div className="card-header">
           <div className="experience-info">
-            <h3 className="experience-title">{experience.name}</h3>
-            <p className="company-name">{experience.company}</p>
+            <h3 className="experience-name">{experience.company}</h3>
+            <p className="company-name">{experience.name}</p>
             <p className="date-range">{getDateRange()}</p>
           </div>
 

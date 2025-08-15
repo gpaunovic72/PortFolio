@@ -105,7 +105,7 @@ export default function ExperienceEditForm({ experience, onSave, onCancel }) {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            rows={4}
+            rows={10}
             placeholder="Description de l'expérience..."
           />
         </div>

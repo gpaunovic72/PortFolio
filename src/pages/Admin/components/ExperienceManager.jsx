@@ -96,59 +96,80 @@ export default function ExperienceManager({ onMessage }) {
               </div>
             ) : (
               <div className="experiences-grid">
-                {experiences.map((experience) => (
-                  <div key={experience.id} className="experience-card">
-                    <div
-                      className="experience-color"
-                      style={{ backgroundColor: experience.color }}
-                    />
-                    <div className="experience-content">
-                      <h4>{experience.name}</h4>
-                      <p className="company">{experience.company}</p>
-                      <p className="dates">
-                        {experience.periods && experience.periods.length > 0
-                          ? `${new Date(
-                              experience.periods[0].start_date
-                            ).toLocaleDateString("fr-FR")} - ${new Date(
-                              experience.periods[
-                                experience.periods.length - 1
-                              ].end_date
-                            ).toLocaleDateString("fr-FR")}`
-                          : `${new Date(
-                              experience.start_date
-                            ).toLocaleDateString("fr-FR")} - ${new Date(
-                              experience.end_date
-                            ).toLocaleDateString("fr-FR")}`}
-                      </p>
-                      <div className="experience-meta">
-                        <span className="priority">
-                          Priorité: {experience.priority}
-                        </span>
-                        {experience.is_dev_experience ? (
-                          <span className="dev-badge">Dev</span>
-                        ) : (
-                          <span className="non-dev-badge">Autre</span>
-                        )}
+                {[...experiences]
+                  .sort((a, b) => {
+                    // Fonction pour obtenir la date la plus récente d'une expérience
+                    const getLatestDate = (experience) => {
+                      if (experience.periods && experience.periods.length > 0) {
+                        // Pour les périodes, prendre la date de fin de la dernière période
+                        const lastPeriod =
+                          experience.periods[experience.periods.length - 1];
+                        return new Date(lastPeriod.end_date);
+                      }
+                      // Pour les expériences simples, prendre la date de fin
+                      return new Date(
+                        experience.end_date || experience.start_date
+                      );
+                    };
+
+                    const dateA = getLatestDate(a);
+                    const dateB = getLatestDate(b);
+
+                    return dateB - dateA; // Plus récent en premier
+                  })
+                  .map((experience) => (
+                    <div key={experience.id} className="experience-card">
+                      <div
+                        className="experience-color"
+                        style={{ backgroundColor: experience.color }}
+                      />
+                      <div className="experience-content">
+                        <h4>{experience.name}</h4>
+                        <p className="company">{experience.company}</p>
+                        <p className="dates">
+                          {experience.periods && experience.periods.length > 0
+                            ? `${new Date(
+                                experience.periods[0].start_date
+                              ).toLocaleDateString("fr-FR")} - ${new Date(
+                                experience.periods[
+                                  experience.periods.length - 1
+                                ].end_date
+                              ).toLocaleDateString("fr-FR")}`
+                            : `${new Date(
+                                experience.start_date
+                              ).toLocaleDateString("fr-FR")} - ${new Date(
+                                experience.end_date
+                              ).toLocaleDateString("fr-FR")}`}
+                        </p>
+                        <div className="experience-meta">
+                          <span className="priority">
+                            Priorité: {experience.priority}
+                          </span>
+                          {experience.is_dev_experience ? (
+                            <span className="dev-badge">Dev</span>
+                          ) : (
+                            <span className="non-dev-badge">Autre</span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="experience-actions">
+                        <button
+                          className="edit-btn"
+                          onClick={() => setEditingExperience(experience)}
+                          title="Modifier"
+                        >
+                          <Edit size={16} />
+                        </button>
+                        <button
+                          className="delete-btn"
+                          onClick={() => handleDelete(experience.id)}
+                          title="Supprimer"
+                        >
+                          <Trash2 size={16} />
+                        </button>
                       </div>
                     </div>
-                    <div className="experience-actions">
-                      <button
-                        className="edit-btn"
-                        onClick={() => setEditingExperience(experience)}
-                        title="Modifier"
-                      >
-                        <Edit size={16} />
-                      </button>
-                      <button
-                        className="delete-btn"
-                        onClick={() => handleDelete(experience.id)}
-                        title="Supprimer"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             )}
           </div>

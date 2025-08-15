@@ -50,9 +50,9 @@ export default function ExperienceTimeline({ experiences, onExperienceClick }) {
             <div className="experience-header">
               <div className="experience-info">
                 <h3 className="experience-title">
-                  {getCompanyName(experience)}
+                  {getCurrentPeriod(experience)}
                 </h3>
-                <p className="company-name">{getCurrentPeriod(experience)}</p>
+                <p className="company-name">{getCompanyName(experience)}</p>
                 <p className="date-range">{getDateRange(experience)}</p>
               </div>
 

@@ -8,10 +8,16 @@ const ExperienceTechnologies = ({ stacks }) => {
   }
 
   return (
-    <View style={styles.technologies} wrap={false}>
+    <View style={styles.technologies}>
       {stacks.map((tech, techIndex) => (
-        <Text key={techIndex} style={styles.techBadge}>
-          {tech}
+        <Text
+          key={techIndex}
+          style={[
+            styles.techBadge,
+            { backgroundColor: tech.color || "#2c5aa0" },
+          ]}
+        >
+          {tech.stack || tech}
         </Text>
       ))}
     </View>
@@ -19,7 +25,15 @@ const ExperienceTechnologies = ({ stacks }) => {
 };
 
 ExperienceTechnologies.propTypes = {
-  stacks: PropTypes.arrayOf(PropTypes.string),
+  stacks: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        stack: PropTypes.string.isRequired,
+        color: PropTypes.string.isRequired,
+      }),
+    ])
+  ),
 };
 
 export default ExperienceTechnologies;

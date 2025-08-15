@@ -150,8 +150,8 @@ export default function ExperiencePeriodsManager({
 
           <div className="form-group">
             <label>Description *</label>
-            <input
-              type="text"
+            <textarea
+              rows={10}
               placeholder="Ex: Première version, Améliorations, Corrections..."
               value={currentPeriod.description}
               onChange={(e) => {

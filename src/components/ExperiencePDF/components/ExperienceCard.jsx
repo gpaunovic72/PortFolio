@@ -1,31 +1,76 @@
 import { Text, View } from "@react-pdf/renderer";
 import PropTypes from "prop-types";
 import { styles } from "../ExperiencePDF.styles";
-import ExperiencePeriods from "./ExperiencePeriods";
 import ExperienceTechnologies from "./ExperienceTechnologies";
 
-const ExperienceCard = ({ experience }) => (
-  <View style={styles.experienceCard} wrap={false}>
-    <View style={styles.experienceHeader} wrap={false}>
-      <View style={{ flex: 1 }}>
-        <Text style={styles.company}>{experience.company}</Text>
-        {experience.is_dev_experience && (
-          <Text style={styles.devBadge}>Expérience Développement</Text>
-        )}
-      </View>
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
 
-      <ExperiencePeriods experience={experience} />
+const ExperienceCard = ({ experience }) => (
+  <View style={styles.experienceCard}>
+    {/* Liseré bleu sur le côté */}
+    <View style={styles.timelineContainer}>
+      <View style={styles.timelineLine} />
+      <View style={styles.timelineCircle} />
+      <View style={styles.timelineLine} />
     </View>
 
-    {/* Description */}
-    {experience.description && (
-      <Text style={styles.description} orphans={2} widows={2}>
-        {experience.description}
-      </Text>
-    )}
+    {/* Contenu principal */}
+    <View style={styles.experienceContent}>
+      {/* Titre principal */}
+      <Text style={styles.experienceTitle}>{experience.name}</Text>
 
-    {/* Technologies */}
-    <ExperienceTechnologies stacks={experience.stacks} />
+      {/* Entreprise */}
+      <Text style={styles.company}>{experience.company}</Text>
+
+      {/* Description principale */}
+      {experience.description && (
+        <Text style={styles.description}>{experience.description}</Text>
+      )}
+
+      {/* Descriptions des périodes pour les projets personnels */}
+      {experience.periods &&
+        experience.periods.length > 0 &&
+        experience.periods.some(
+          (period) =>
+            period.description && period.description.split("\n").length > 1
+        ) && (
+          <View style={styles.periodsSection}>
+            {experience.periods.map(
+              (period, index) =>
+                period.description &&
+                period.description.split("\n").length > 1 && (
+                  <View key={index} style={styles.periodDescription}>
+                    <View style={styles.periodHeader}>
+                      <Text style={styles.periodTitle}>
+                        {period.description
+                          .split("\n")[0]
+                          ?.replace("Projet : ", "") || ""}
+                      </Text>
+                      {period.start_date && period.end_date && (
+                        <Text style={styles.periodDates}>
+                          {formatDate(period.start_date)} -{" "}
+                          {formatDate(period.end_date)}
+                        </Text>
+                      )}
+                    </View>
+                    <Text style={styles.periodContent}>
+                      {period.description.split("\n").slice(1).join("\n")}
+                    </Text>
+                  </View>
+                )
+            )}
+          </View>
+        )}
+
+      {/* Technologies */}
+      <ExperienceTechnologies stacks={experience.stacks} />
+    </View>
   </View>
 );
 
@@ -39,6 +84,7 @@ ExperienceCard.propTypes = {
     is_dev_experience: PropTypes.bool,
     periods: PropTypes.array,
     stacks: PropTypes.array,
+    name: PropTypes.string.isRequired,
   }).isRequired,
 };
 
