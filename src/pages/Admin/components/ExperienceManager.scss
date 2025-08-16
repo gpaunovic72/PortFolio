@@ -1,0 +1,165 @@
+// STYLES POUR LE GESTIONNAIRE D'EXPÉRIENCES
+.experience-manager {
+  .section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    h2 {
+      color: #f0f6fc;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: #7d8590;
+      font-size: 0.9rem;
+    }
+  }
+
+  .experiences-list {
+    margin-top: 2rem;
+
+    h3 {
+      color: #f0f6fc;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .no-experiences {
+    text-align: center;
+    padding: 3rem;
+    color: #7d8590;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+
+    p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  .experiences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+
+  .experience-card {
+    display: flex;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      border-color: #58a6ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .experience-color {
+      width: 4px;
+      border-radius: 2px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .experience-content {
+      flex: 1;
+
+      h4 {
+        color: #f0f6fc;
+        margin: 0 0 0.5rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .company {
+        color: #58a6ff;
+        margin: 0 0 0.5rem 0;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .dates {
+        color: #7d8590;
+        margin: 0 0 0.5rem 0;
+        font-size: 0.8rem;
+      }
+
+      .experience-meta {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        .priority {
+          color: #7d8590;
+          font-size: 0.8rem;
+          background: #21262d;
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+
+        .dev-badge {
+          color: #238636;
+          font-size: 0.7rem;
+          font-weight: 600;
+          background: rgba(35, 134, 54, 0.2);
+          padding: 2px 6px;
+          border-radius: 4px;
+          border: 1px solid rgba(35, 134, 54, 0.3);
+        }
+
+        .non-dev-badge {
+          color: #6e7681;
+          font-size: 0.7rem;
+          font-weight: 600;
+          background: rgba(110, 118, 129, 0.2);
+          padding: 2px 6px;
+          border-radius: 4px;
+          border: 1px solid rgba(110, 118, 129, 0.3);
+        }
+      }
+    }
+
+    .experience-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+
+      button {
+        background: none;
+        border: none;
+        padding: 4px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &.edit-btn {
+          color: #58a6ff;
+
+          &:hover {
+            background: rgba(88, 166, 255, 0.1);
+          }
+        }
+
+        &.delete-btn {
+          color: #da3633;
+
+          &:hover {
+            background: rgba(218, 54, 51, 0.1);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,52 +1,129 @@
+import { motion } from "framer-motion";
 import Picture from "../../assets/photographie-goran-paunovic.webp";
 import ExperienceTable from "../../components/ExperienceTable";
 import Links from "../../components/Links";
 import ModalButton from "../../components/ModalButton";
 import PictureProfile from "../../components/PictureProfile";
-import Presentation from "../../components/presentation";
+import Presentation from "../../components/Presentation";
 import Contact from "../../components/Profil";
 import Project from "../../components/Project";
 import Stack from "../../components/Stack";
 import "../Home/Home.scss";
 
 export default function Home() {
+  // Animations variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const profileVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const presentationVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.3,
+      },
+    },
+  };
+
   return (
-    <div className="home">
-      <section className="home__about">
-        <div className="home__about--profil">
+    <motion.div
+      className="home"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.section
+        id="presentation"
+        className="home__about"
+        variants={sectionVariants}
+      >
+        <motion.div className="home__about--profil" variants={profileVariants}>
           <PictureProfile picture={Picture} name="Goran Paunovic" />
           <Contact name="Goran Paunovic" text="Développeur Web" />
           <ModalButton />
           <Contact name="" text="Le Breil sur Mérize, 72370" />
           <hr className="separation"></hr>
           <Links title="Liens utiles" />
-        </div>
-        <div className="home__about--presentation">
+        </motion.div>
+        <motion.div
+          className="home__about--presentation"
+          variants={presentationVariants}
+        >
           <div className="pres">
             <Presentation
               title="BIENVENUE SUR MON PORTFOLIO"
-              text={`Je m’appelle Goran Paunovic, développeur web passionné, spécialisé dans la conception d'applications web modernes, performantes et accessibles.
+              text={`Je m'appelle Goran Paunovic, développeur web passionné, spécialisé dans la conception d'applications web modernes, performantes et accessibles.
                 
-Je conçois des interfaces soignées et des fonctionnalités robustes en m’appuyant sur des technologies comme React, Node.js, Prisma, MySQL, et Next.js.
+Je conçois des interfaces soignées et des fonctionnalités robustes en m'appuyant sur des technologies comme React, Node.js, Prisma, MySQL, et Next.js.
 
-Chaque projet est pour moi une opportunité de progresser, d’appliquer les bonnes pratiques et de proposer des solutions efficaces, toujours avec sérieux et implication.
+Chaque projet est pour moi une opportunité de progresser, d'appliquer les bonnes pratiques et de proposer des solutions efficaces, toujours avec sérieux et implication.
 
-Curieux, rigoureux et motivé, je m’investis pleinement dans chaque mission avec un souci constant de qualité et de fiabilité.
+Curieux, rigoureux et motivé, je m'investis pleinement dans chaque mission avec un souci constant de qualité et de fiabilité.
 
-Bonne visite, et n’hésitez pas à me contacter pour échanger ou collaborer !`}
+Bonne visite, et n'hésitez pas à me contacter pour échanger ou collaborer !`}
             />
             <Stack />
           </div>
-        </div>
-      </section>
-      <section className="home__career">
+        </motion.div>
+      </motion.section>
+      <motion.section
+        id="experiences"
+        className="home__career"
+        variants={sectionVariants}
+      >
         <div className="home__career--exp">
           <ExperienceTable />
         </div>
+      </motion.section>
+      <motion.section
+        id="projects"
+        className="home__career"
+        variants={sectionVariants}
+      >
         <div className="home__career--project">
           <Project />
         </div>
-      </section>
-    </div>
+      </motion.section>
+      <motion.section
+        id="contact"
+        className="home__contact"
+        variants={sectionVariants}
+      ></motion.section>
+    </motion.div>
   );
 }

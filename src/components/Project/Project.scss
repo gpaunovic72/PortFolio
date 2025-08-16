@@ -16,8 +16,11 @@
 
   &__title {
     font-size: $font-size-title-mobile;
-    font-weight: $font-weight-bold;
-    color: $color-text;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   &__cards {
@@ -29,47 +32,69 @@
 
     &--card {
       background-color: $primary-color;
-      border: 3px solid $color-border;
-      border-radius: 30px;
+      border: 2px solid $color-border;
+      border-radius: 12px;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      height: 110px;
+      height: 180px;
+      padding: 15px;
+      gap: 10px;
+      position: relative;
 
       .title {
         display: flex;
-        align-items: center;
-        padding: 10px;
-        gap: 5px;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+        margin-bottom: 12px;
+        padding-right: 60px;
 
         h3 {
-          color: $color-h3;
+          color: #f0f6fc;
           font-size: $font-size-infos-mobile;
+          font-weight: 600;
+          line-height: 1.3;
+          word-wrap: break-word;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          max-height: 2.6em;
         }
         p {
           color: $color-text-cards;
           font-size: $font-size-text-mobile;
           border: 1px solid $color-border;
-          border-radius: 30px;
+          border-radius: 20px;
           text-align: center;
-          padding: 4px 9px;
+          padding: 4px 8px;
+          align-self: flex-start;
         }
       }
       .card {
         display: flex;
         flex-wrap: wrap;
-        gap: 5px;
-        padding: 0 10px 10px 10px;
+        gap: 6px;
+        padding: 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex: 1;
 
         &__stack {
           display: flex;
           align-items: center;
-          gap: 5px;
-          font-size: $font-size-text-mobile;
+          gap: 2px;
+          font-size: 0.75rem;
           color: $color-text-cards;
+          padding: 3px 6px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
 
           &--color {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
           }
         }
@@ -77,20 +102,36 @@
         // Styles pour les images des projets
         img {
           width: 100%;
-          height: 80px; // Hauteur fixe pour uniformité
-          object-fit: contain; // Montre toute l'image sans couper
-          object-position: center; // Centre l'image
-          border-radius: 8px; // Coins arrondis
+          height: 80px;
+          object-fit: contain;
+          object-position: center;
+          border-radius: 8px;
           border: 1px solid $color-border;
-          background-color: #f5f5f5; // Fond pour les images transparentes
+          background-color: #f5f5f5;
         }
       }
+      .projectYear {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: $color-text-cards;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-align: center;
+        padding: 4px 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid $color-border;
+        z-index: 1;
+      }
+
       .btnProject {
-        margin: 7px;
+        margin: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         white-space: nowrap;
+        align-self: flex-end;
       }
     }
   }
@@ -101,6 +142,11 @@
 
     &__title {
       font-size: $font-size-title-tab;
+      font-weight: 700;
+      background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-left: 38px;
     }
 
@@ -113,11 +159,30 @@
 
       &--card {
         width: 80%;
-        padding: 5px;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+        height: 120px;
+
+        .title {
+          flex-direction: column;
+          flex: 1;
+          padding-right: 0;
+        }
+
+        .card {
+          flex: 1;
+          justify-content: flex-start;
+        }
+
+        .projectYear {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+        }
 
         .btnProject {
-          margin: 15px;
-          justify-content: center;
+          margin: 0;
         }
       }
     }

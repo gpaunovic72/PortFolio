@@ -13,19 +13,32 @@
   &__title {
     text-wrap: nowrap;
     font-size: $font-size-title-mobile;
-    font-weight: $font-weight-bold;
-    color: $color-title;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
   }
 
   &__separation {
     border: 2px solid $color-border;
     width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #58a6ff;
+      box-shadow: 0 4px 8px rgba(88, 166, 255, 0.2);
+    }
   }
 
   &__text {
     font-size: $font-size-text-mobile;
     font-weight: $font-weight-medium;
     color: $color-text;
+    line-height: 1.6;
+    text-align: justify;
   }
 
   @include tablet {

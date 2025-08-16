@@ -1,0 +1,112 @@
+// STYLES POUR LE FORMULAIRE DE LOGIN
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0d1117;
+  color: #c9d1d9;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  &__container {
+    background: #161b22;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    width: 100%;
+    max-width: 400px;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: white;
+    text-align: center;
+
+    &--success {
+      background: #238636;
+    }
+
+    &--error {
+      background: #da3633;
+    }
+  }
+
+  &__field {
+    margin-bottom: 1rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #8b949e;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      color: #c9d1d9;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #1f6feb;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #238636;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background: #2ea043;
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      background: #8b949e;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  &__info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #21262d;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #8b949e;
+    text-align: center;
+  }
+}

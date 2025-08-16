@@ -1,193 +1,431 @@
 @use "../../styles/variables.scss" as *;
 @use "../../styles/mixin.scss" as *;
-@use "sass:color";
 
+// Overlay avec effet de flou
 .close {
   position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.5);
-  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+  cursor: pointer;
 }
 
+// Modal principal avec glassmorphism
 .modal {
   position: fixed;
-  width: 90%;
-  max-width: 600px;
-  height: auto;
-  padding: 32px 24px;
-  z-index: 10;
-  background: $primary-color;
-  border-radius: 24px;
-  top: 20%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -20%);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  @include flex-center;
-  flex-direction: column;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  z-index: 1000;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(88, 166, 255, 0.1);
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
+  @include tablet {
+    padding: 2.5rem;
+    max-width: 600px;
+  }
+
+  @include desktop {
+    padding: 3rem;
+    max-width: 700px;
+  }
+
+  // Bouton de fermeture
   &__close {
-    background: red;
-    color: white;
-    border: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(248, 81, 73, 0.1);
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    border-radius: 50%;
+    color: #f85149;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: $font-weight-bold;
-
-    transition: transform 0.2s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
 
     &:hover {
-      background: rgba(252, 53, 3, 0.4);
-      transform: scale(1.1);
+      background: rgba(248, 81, 73, 0.2);
+      border-color: #f85149;
+      transform: scale(1.1) rotate(90deg);
+      box-shadow: 0 0 20px rgba(248, 81, 73, 0.3);
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
 
+  // Titre
   &__title {
-    color: $color-title;
-    margin-bottom: 24px;
-    font-size: $font-size-title-mobile;
-    font-weight: bold;
-    letter-spacing: 1px;
+    background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+    font-weight: 700;
     text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+      border-radius: 2px;
+    }
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
   }
 
+  // Formulaire
   &__form {
-    width: 100%;
-    max-width: 420px;
-    background: $secondary-color;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    border-radius: 18px;
-    gap: 18px;
-    border: 2px solid $color-border;
-    padding: 24px 18px;
+    gap: 1.5rem;
 
-    &--label {
-      color: $color-title;
-      font-size: $font-size-title-mobile;
-      margin-bottom: 6px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+    // Groupe de champs
+    &--field {
+      position: relative;
     }
 
-    &--input,
-    &--text {
-      background: $primary-color;
-      border-radius: 18px;
-      border: 2px solid $color-border;
-      color: $color-text;
-      padding: 12px 16px;
-      font-size: $font-size-text-mobile;
-      margin-bottom: 8px;
-      transition: border-color 0.2s;
+    // Labels
+    &--label {
+      display: block;
+      color: #f0f6fc;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      cursor: default;
 
-      &:focus {
-        border-color: $color-btn;
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(35, 134, 54, 0.15);
+      &::after {
+        content: " *";
+        color: #f85149;
       }
     }
 
+    // Inputs et textarea
+    &--input,
     &--text {
-      min-height: 120px;
-      max-height: 220px;
-      resize: vertical;
-      margin-bottom: 8px;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: rgba(22, 27, 34, 0.8);
+      border: 2px solid rgba(48, 54, 61, 0.6);
+      border-radius: 12px;
+      color: #f0f6fc;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      cursor: text;
+
+      &::placeholder {
+        color: rgba(240, 246, 252, 0.5);
+        font-weight: 400;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #58a6ff;
+        background: rgba(22, 27, 34, 0.9);
+        box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.1),
+          0 8px 25px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      &:hover:not(:focus) {
+        border-color: rgba(88, 166, 255, 0.4);
+        background: rgba(22, 27, 34, 0.85);
+      }
+
+      // Animation de focus avec ligne
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+      }
+
+      &:focus::before {
+        width: 100%;
+      }
     }
 
+    // Textarea spécifique
+    &--text {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+
+      @include tablet {
+        min-height: 140px;
+      }
+    }
+
+    // Messages d'erreur animés
+    &--error {
+      color: #f85149;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(248, 81, 73, 0.1);
+      border: 1px solid rgba(248, 81, 73, 0.2);
+      border-radius: 8px;
+      animation: slideInError 0.3s ease-out;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: default;
+
+      &::before {
+        content: "⚠️";
+        font-size: 0.8rem;
+      }
+    }
+
+    // Message de succès
+    &--success {
+      color: #2ea043;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(46, 160, 67, 0.1);
+      border: 1px solid rgba(46, 160, 67, 0.3);
+      border-radius: 12px;
+      margin: 1rem 0;
+      animation: slideInSuccess 0.4s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: default;
+
+      &::before {
+        content: "✅";
+        font-size: 1rem;
+      }
+    }
+
+    // Bouton de soumission
     &--submit {
       width: 100%;
-      height: 44px;
-      background: $color-btn;
-      border-radius: 18px;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
       border: none;
-      color: $color-text;
-      font-size: $font-size-title-mobile;
-      font-weight: bold;
-      letter-spacing: 1px;
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
       cursor: pointer;
-      margin-top: 12px;
-      box-shadow: 0 2px 8px rgba(35, 134, 54, 0.08);
-      transition: background 0.2s, transform 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: 0 4px 15px rgba(31, 111, 235, 0.3),
+        0 0 0 1px rgba(88, 166, 255, 0.2);
+
+      // Effet de brillance au hover
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
 
       &:hover:not(:disabled) {
-        background: color.adjust($color-btn, $lightness: -10%);
-        transform: translateY(-2px) scale(1.03);
+        background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(31, 111, 235, 0.4),
+          0 0 0 1px rgba(88, 166, 255, 0.3);
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(31, 111, 235, 0.3),
+          0 0 0 1px rgba(88, 166, 255, 0.2);
       }
 
       &:disabled {
-        background: #6c757d;
+        background: linear-gradient(135deg, #6c757d 0%, #8b949e 100%);
         cursor: not-allowed;
         transform: none;
+        box-shadow: none;
         opacity: 0.7;
+        pointer-events: none;
       }
 
-      // Animation de loading
+      // État de chargement
       &:disabled::after {
         content: "";
-        display: inline-block;
-        width: 12px;
-        height: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
         border: 2px solid transparent;
-        border-top: 2px solid $color-text;
+        border-top: 2px solid white;
         border-radius: 50%;
         animation: spin 1s linear infinite;
-        margin-left: 8px;
-        vertical-align: middle;
       }
     }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    &--error {
-      color: #e74c3c;
-      font-size: 13px;
-      margin-top: -4px;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
+    // États d'erreur des champs
     &--input.error,
     &--text.error {
-      border: 2px solid #e74c3c;
-      color: color.adjust($color-text, $lightness: 8%);
+      border-color: #f85149;
+      background: rgba(248, 81, 73, 0.05);
+      box-shadow: 0 0 0 4px rgba(248, 81, 73, 0.1),
+        0 4px 15px rgba(248, 81, 73, 0.1);
+
+      &:focus {
+        border-color: #f85149;
+        box-shadow: 0 0 0 4px rgba(248, 81, 73, 0.2),
+          0 8px 25px rgba(248, 81, 73, 0.15);
+      }
     }
   }
+}
 
-  @include tablet {
-    .modal {
-      padding: 30px;
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-      &__title {
-        font-size: $font-size-title-tab;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes slideInError {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInSuccess {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    padding: 1.5rem;
+    margin: 1rem;
+
+    &__title {
+      font-size: 1.75rem;
+    }
+
+    &__form {
+      gap: 1rem;
+
+      &--input,
+      &--text {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
       }
 
-      &__form {
-        &--label {
-          font-size: $font-size-title-tab;
-        }
-
-        &--input,
-        &--text {
-          font-size: $font-size-title-tab;
-        }
-
-        &--submit {
-          font-size: $font-size-title-tab;
-        }
+      &--submit {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
       }
     }
+  }
+}
+
+// Amélioration de l'accessibilité
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal__form--input,
+  .modal__form--text,
+  .modal__form--submit {
+    animation: none;
+    transition: none;
   }
 }

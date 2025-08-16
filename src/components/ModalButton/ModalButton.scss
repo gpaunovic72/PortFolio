@@ -2,11 +2,11 @@
 @use "../../styles/mixin.scss" as *;
 
 .btnModal {
-  background: $color-btn;
+  background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
   font-size: $font-size-title-mobile;
   font-weight: $font-weight-bold;
-  color: $color-title;
-  border: 1px solid $color-border;
+  color: white;
+  border: none;
   display: flex;
   justify-content: center;
   padding: 5px 10.5px;
@@ -14,12 +14,18 @@
   min-width: 236px;
   border-radius: 10px;
   cursor: pointer;
-
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(31, 111, 235, 0.3);
 
   &:hover {
-    background: rgba(35, 134, 54, 0.4);
-    transform: scale(1.1);
+    background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31, 111, 235, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(31, 111, 235, 0.3);
   }
 
   @include tablet {

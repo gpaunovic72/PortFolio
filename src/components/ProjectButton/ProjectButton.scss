@@ -2,19 +2,26 @@
 @use "../../styles/mixin.scss" as *;
 
 .btnProjects {
-  background: $color-btn;
-  font-size: $font-size-infos-mobile;
-  font-weight: $font-weight-medium;
-  color: $color-title;
+  background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
   border: none;
-  padding: 5px 12px;
-  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
   cursor: pointer;
-
-  transition: transform 0.2s ease-in-out;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(31, 111, 235, 0.3);
 
   &:hover {
-    background: rgba(35, 134, 54, 0.4);
-    transform: scale(1.1);
+    background: linear-gradient(135deg, #58a6ff 0%, #1f6feb 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31, 111, 235, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(31, 111, 235, 0.3);
   }
 }
