@@ -355,3 +355,4 @@ _N'hésitez pas à me contacter pour échanger ou collaborer sur vos projets._
 
 </div>
 # Test de déploiement automatique - Sat Aug 16 23:27:38 CEST 2025
+# Redéploiement avec variables EmailJS - Sat Aug 16 23:39:15 CEST 2025
