@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Link, useParams } from "react-router-dom";
@@ -15,22 +16,85 @@ const ProjectDetail = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { project, loading, error } = useProject(parseInt(id));
 
+  // Animations variants
+  const pageVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const errorVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="project-detail-page">
-      {loading && <Skeleton className="project-detail-page" />}
-      {error && <div>Erreur: {error}</div>}
-      {error && !project && (
-        <div className="project-not-found">
-          <h2>Projet non trouvé</h2>
-          <Link to="/">Retour à l&apos;accueil</Link>
-        </div>
-      )}
+    <motion.div
+      className="project-detail-page"
+      variants={pageVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <AnimatePresence>
+        {loading && <Skeleton className="project-detail-page" />}
+        {error && (
+          <motion.div
+            variants={errorVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            Erreur: {error}
+          </motion.div>
+        )}
+        {error && !project && (
+          <motion.div
+            className="project-not-found"
+            variants={errorVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <h2>Projet non trouvé</h2>
+            <Link to="/">Retour à l&apos;accueil</Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header */}
-      <ProjectHeader project={project} />
+      <motion.div variants={sectionVariants}>
+        <ProjectHeader project={project} />
+      </motion.div>
+
       {/* Gallery */}
-      <ProjectGallery project={project} onImageClick={setSelectedImage} />
+      <motion.div variants={sectionVariants}>
+        <ProjectGallery project={project} onImageClick={setSelectedImage} />
+      </motion.div>
+
       {/* Contenu principal */}
-      <div className="project-content">
+      <motion.div className="project-content" variants={sectionVariants}>
         <div className="container">
           <div className="content-grid">
             {/* Description */}
@@ -43,16 +107,18 @@ const ProjectDetail = () => {
           {/* Actions */}
           <ProjectActions project={project} />
         </div>
-      </div>
+      </motion.div>
 
       {/* Modal plein écran */}
-      {selectedImage && (
-        <FullscreenModal
-          image={selectedImage}
-          onClose={() => setSelectedImage(null)}
-        />
-      )}
-    </div>
+      <AnimatePresence>
+        {selectedImage && (
+          <FullscreenModal
+            image={selectedImage}
+            onClose={() => setSelectedImage(null)}
+          />
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

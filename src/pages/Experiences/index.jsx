@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import DownloadPDFButton from "../../components/DownloadPDFButton";
 import { useAllExperiences } from "../../hooks/useAllExperiences";
@@ -38,10 +39,64 @@ export default function Experiences() {
     setSelectedExperience(null);
   };
 
+  // Animations variants
+  const pageVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.2,
+      },
+    },
+  };
+
+  const loadingVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="experiences-page">
+    <motion.div
+      className="experiences-page"
+      variants={pageVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Header */}
-      <div className="experiences-header">
+      <motion.div className="experiences-header" variants={headerVariants}>
         <div className="header-content">
           <div className="header-text">
             <h1>Expériences Professionnelles</h1>
@@ -52,45 +107,67 @@ export default function Experiences() {
             className="header-download-btn"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Timeline des expériences */}
-      <div className="experiences-content">
+      <motion.div className="experiences-content" variants={contentVariants}>
         {sortedExperiences.length > 0 && (
           <ExperienceTimeline
             experiences={sortedExperiences}
             onExperienceClick={handleExperienceClick}
           />
         )}
-      </div>
+      </motion.div>
 
       {/* Modal pour les détails */}
-      {selectedExperience && (
-        <ExperienceModal
-          experience={selectedExperience}
-          onClose={handleModalClose}
-        />
-      )}
+      <AnimatePresence>
+        {selectedExperience && (
+          <ExperienceModal
+            experience={selectedExperience}
+            onClose={handleModalClose}
+          />
+        )}
+      </AnimatePresence>
 
       {/* États de chargement et d'erreur */}
-      {loading && (
-        <div className="loading-state">
-          <div className="loading-spinner"></div>
-          <p>Chargement des expériences...</p>
-        </div>
-      )}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            className="loading-state"
+            variants={loadingVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <div className="loading-spinner"></div>
+            <p>Chargement des expériences...</p>
+          </motion.div>
+        )}
 
-      {error && (
-        <div className="error-state">
-          <p>Erreur: {error}</p>
-        </div>
-      )}
+        {error && (
+          <motion.div
+            className="error-state"
+            variants={loadingVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <p>Erreur: {error}</p>
+          </motion.div>
+        )}
 
-      {!loading && !error && sortedExperiences.length === 0 && (
-        <div className="empty-state">
-          <p>Aucune expérience à afficher</p>
-        </div>
-      )}
-    </div>
+        {!loading && !error && sortedExperiences.length === 0 && (
+          <motion.div
+            className="empty-state"
+            variants={loadingVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <p>Aucune expérience à afficher</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
