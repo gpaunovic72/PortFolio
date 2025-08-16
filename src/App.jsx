@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer/index.jsx";
 import Header from "./components/Header/index.jsx";
 import ScrollToTop from "./components/ScrollToTop/index.jsx";
+import ScrollToTopButton from "./components/ScrollToTopButton/index.jsx";
 import AdminPage from "./pages/Admin/index.jsx";
 import Experiences from "./pages/Experiences/index.jsx";
 import Home from "./pages/Home/index.jsx";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/experience" element={<Experiences />} />
         </Routes>
         <Footer />
+        <ScrollToTopButton />
       </div>
     </BrowserRouter>
   );
