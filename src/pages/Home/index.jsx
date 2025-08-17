@@ -11,7 +11,7 @@ import Stack from "../../components/Stack";
 import "../Home/Home.scss";
 
 export default function Home() {
-  // Animations variants - Même logique que Experiences
+  // Animations variants - EXACTEMENT comme Experiences
   const pageVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const headerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
       y: 0,
