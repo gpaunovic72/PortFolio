@@ -94,6 +94,11 @@ export default function Experiences() {
       variants={pageVariants}
       initial="hidden"
       animate="visible"
+      style={{ visibility: "hidden" }}
+      onAnimationStart={() => {
+        document.querySelector(".experiences-page").style.visibility =
+          "visible";
+      }}
     >
       {/* Header */}
       <motion.div className="experiences-header" variants={headerVariants}>
