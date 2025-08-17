@@ -11,21 +11,20 @@ import Stack from "../../components/Stack";
 import "../Home/Home.scss";
 
 export default function Home() {
-  // Animations variants
-  const containerVariants = {
-    hidden: { opacity: 0, y: 10 },
+  // Animations variants - Même logique que Experiences
+  const pageVariants = {
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.4,
-        ease: "easeOut",
+        duration: 0.6,
+        staggerChildren: 0.1,
       },
     },
   };
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const headerVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -36,7 +35,7 @@ export default function Home() {
     },
   };
 
-  const profileVariants = {
+  const contentVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -44,19 +43,7 @@ export default function Home() {
       transition: {
         duration: 0.8,
         ease: "easeOut",
-      },
-    },
-  };
-
-  const presentationVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        delay: 0.3,
+        delay: 0.2,
       },
     },
   };
@@ -64,27 +51,29 @@ export default function Home() {
   return (
     <motion.div
       className="home"
-      variants={containerVariants}
+      variants={pageVariants}
       initial="hidden"
       animate="visible"
+      style={{ visibility: "hidden" }}
+      onAnimationStart={() => {
+        document.querySelector(".home").style.visibility = "visible";
+      }}
     >
+      {/* Header/Présentation */}
       <motion.section
         id="presentation"
         className="home__about"
-        variants={sectionVariants}
+        variants={headerVariants}
       >
-        <motion.div className="home__about--profil" variants={profileVariants}>
+        <div className="home__about--profil">
           <PictureProfile picture={Picture} name="Goran Paunovic" />
           <Contact name="Goran Paunovic" text="Développeur Web" />
           <ModalButton />
           <Contact name="" text="Le Breil sur Mérize, 72370" />
           <hr className="separation"></hr>
           <Links title="Liens utiles" />
-        </motion.div>
-        <motion.div
-          className="home__about--presentation"
-          variants={presentationVariants}
-        >
+        </div>
+        <div className="home__about--presentation">
           <div className="pres">
             <Presentation
               title="BIENVENUE SUR MON PORTFOLIO"
@@ -100,12 +89,14 @@ Bonne visite, et n'hésitez pas à me contacter pour échanger ou collaborer !`}
             />
             <Stack />
           </div>
-        </motion.div>
+        </div>
       </motion.section>
+
+      {/* Contenu principal */}
       <motion.section
         id="experiences"
         className="home__career"
-        variants={sectionVariants}
+        variants={contentVariants}
       >
         <div className="home__career--exp">
           <ExperienceTable />
@@ -114,7 +105,7 @@ Bonne visite, et n'hésitez pas à me contacter pour échanger ou collaborer !`}
       <motion.section
         id="projects"
         className="home__career"
-        variants={sectionVariants}
+        variants={contentVariants}
       >
         <div className="home__career--project">
           <Project />
@@ -123,7 +114,7 @@ Bonne visite, et n'hésitez pas à me contacter pour échanger ou collaborer !`}
       <motion.section
         id="contact"
         className="home__contact"
-        variants={sectionVariants}
+        variants={contentVariants}
       ></motion.section>
     </motion.div>
   );
