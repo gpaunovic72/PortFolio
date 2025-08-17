@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const headerVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -50,14 +50,10 @@ export default function Home() {
 
   return (
     <motion.div
-      className="home"
+      className="home motion-loaded"
       variants={pageVariants}
       initial="hidden"
       animate="visible"
-      style={{ visibility: "hidden" }}
-      onAnimationStart={() => {
-        document.querySelector(".home").style.visibility = "visible";
-      }}
     >
       {/* Header/Présentation */}
       <motion.section
