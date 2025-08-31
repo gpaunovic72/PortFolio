@@ -50,10 +50,13 @@ export default function Home() {
 
   return (
     <motion.div
-      className="home motion-loaded"
+      className="home"
       variants={pageVariants}
       initial="hidden"
       animate="visible"
+      onAnimationStart={() => {
+        document.querySelector(".home")?.classList.add("motion-loaded");
+      }}
     >
       {/* Header/Présentation */}
       <motion.section
