@@ -24,12 +24,12 @@ export default function Home() {
   };
 
   const headerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, visibility: "hidden" },
     visible: {
       opacity: 1,
-      y: 0,
+      visibility: "visible",
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
